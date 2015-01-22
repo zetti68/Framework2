@@ -1,0 +1,8 @@
+framework module AndroidWrapper [system] {
+  umbrella headers AndroidWrapper.h
+
+  export *
+  module * { 
+    export *
+  }
+}
