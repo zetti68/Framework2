@@ -6,21 +6,24 @@
 #ifndef _JavaSecurityInterfacesDSAPrivateKey_H_
 #define _JavaSecurityInterfacesDSAPrivateKey_H_
 
-@class JavaMathBigInteger;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/PrivateKey.h"
 #include "java/security/interfaces/DSAKey.h"
+
+@class JavaMathBigInteger;
 
 #define JavaSecurityInterfacesDSAPrivateKey_serialVersionUID 7776497482533790279LL
 
 @protocol JavaSecurityInterfacesDSAPrivateKey < JavaSecurityInterfacesDSAKey, JavaSecurityPrivateKey, NSObject, JavaObject >
+
 - (JavaMathBigInteger *)getX;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityInterfacesDSAPrivateKey_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityInterfacesDSAPrivateKey)
 
 J2OBJC_STATIC_FIELD_GETTER(JavaSecurityInterfacesDSAPrivateKey, serialVersionUID, jlong)
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityInterfacesDSAPrivateKey)
 
 #endif // _JavaSecurityInterfacesDSAPrivateKey_H_

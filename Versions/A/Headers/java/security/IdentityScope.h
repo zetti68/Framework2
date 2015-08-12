@@ -6,53 +6,60 @@
 #ifndef _JavaSecurityIdentityScope_H_
 #define _JavaSecurityIdentityScope_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/Identity.h"
+
 @protocol JavaSecurityPrincipal;
 @protocol JavaSecurityPublicKey;
 @protocol JavaUtilEnumeration;
 
-#import "JreEmulation.h"
-#include "java/security/Identity.h"
+@interface JavaSecurityIdentityScope : JavaSecurityIdentity
 
-#define JavaSecurityIdentityScope_serialVersionUID -2337346281189773310LL
-
-@interface JavaSecurityIdentityScope : JavaSecurityIdentity {
-}
-
-- (instancetype)init;
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)name;
 
 - (instancetype)initWithNSString:(NSString *)name
    withJavaSecurityIdentityScope:(JavaSecurityIdentityScope *)scope;
 
-+ (JavaSecurityIdentityScope *)getSystemScope;
-
-+ (void)setSystemScopeWithJavaSecurityIdentityScope:(JavaSecurityIdentityScope *)scope;
-
-- (jint)size;
-
-- (JavaSecurityIdentity *)getIdentityWithNSString:(NSString *)name;
+- (void)addIdentityWithJavaSecurityIdentity:(JavaSecurityIdentity *)identity;
 
 - (JavaSecurityIdentity *)getIdentityWithJavaSecurityPrincipal:(id<JavaSecurityPrincipal>)principal;
 
 - (JavaSecurityIdentity *)getIdentityWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key;
 
-- (void)addIdentityWithJavaSecurityIdentity:(JavaSecurityIdentity *)identity;
+- (JavaSecurityIdentity *)getIdentityWithNSString:(NSString *)name;
 
-- (void)removeIdentityWithJavaSecurityIdentity:(JavaSecurityIdentity *)identity;
++ (JavaSecurityIdentityScope *)getSystemScope;
 
 - (id<JavaUtilEnumeration>)identities;
 
+- (void)removeIdentityWithJavaSecurityIdentity:(JavaSecurityIdentity *)identity;
+
+- (jint)size;
+
 - (NSString *)description;
+
+#pragma mark Protected
+
+- (instancetype)init;
+
++ (void)setSystemScopeWithJavaSecurityIdentityScope:(JavaSecurityIdentityScope *)scope;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityIdentityScope_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityIdentityScope)
 
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityIdentityScope, serialVersionUID, jlong)
+FOUNDATION_EXPORT void JavaSecurityIdentityScope_init(JavaSecurityIdentityScope *self);
 
-FOUNDATION_EXPORT JavaSecurityIdentityScope *JavaSecurityIdentityScope_systemScope_;
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityIdentityScope, systemScope_, JavaSecurityIdentityScope *)
-J2OBJC_STATIC_FIELD_SETTER(JavaSecurityIdentityScope, systemScope_, JavaSecurityIdentityScope *)
+FOUNDATION_EXPORT void JavaSecurityIdentityScope_initWithNSString_(JavaSecurityIdentityScope *self, NSString *name);
+
+FOUNDATION_EXPORT void JavaSecurityIdentityScope_initWithNSString_withJavaSecurityIdentityScope_(JavaSecurityIdentityScope *self, NSString *name, JavaSecurityIdentityScope *scope);
+
+FOUNDATION_EXPORT JavaSecurityIdentityScope *JavaSecurityIdentityScope_getSystemScope();
+
+FOUNDATION_EXPORT void JavaSecurityIdentityScope_setSystemScopeWithJavaSecurityIdentityScope_(JavaSecurityIdentityScope *scope);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityIdentityScope)
 
 #endif // _JavaSecurityIdentityScope_H_

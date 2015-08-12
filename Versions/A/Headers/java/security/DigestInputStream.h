@@ -6,25 +6,26 @@
 #ifndef _JavaSecurityDigestInputStream_H_
 #define _JavaSecurityDigestInputStream_H_
 
+#include "J2ObjC_header.h"
+#include "java/io/FilterInputStream.h"
+
 @class IOSByteArray;
 @class JavaIoInputStream;
 @class JavaSecurityMessageDigest;
 
-#import "JreEmulation.h"
-#include "java/io/FilterInputStream.h"
-
 @interface JavaSecurityDigestInputStream : JavaIoFilterInputStream {
  @public
   JavaSecurityMessageDigest *digest_;
-  jboolean isOn_;
 }
+
+#pragma mark Public
 
 - (instancetype)initWithJavaIoInputStream:(JavaIoInputStream *)stream
             withJavaSecurityMessageDigest:(JavaSecurityMessageDigest *)digest;
 
 - (JavaSecurityMessageDigest *)getMessageDigest;
 
-- (void)setMessageDigestWithJavaSecurityMessageDigest:(JavaSecurityMessageDigest *)digest;
+- (void)onWithBoolean:(jboolean)on;
 
 - (jint)read;
 
@@ -32,16 +33,20 @@
                   withInt:(jint)byteOffset
                   withInt:(jint)byteCount;
 
-- (void)onWithBoolean:(jboolean)on;
+- (void)setMessageDigestWithJavaSecurityMessageDigest:(JavaSecurityMessageDigest *)digest;
 
 - (NSString *)description;
 
-- (void)copyAllFieldsTo:(JavaSecurityDigestInputStream *)other;
-
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityDigestInputStream_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityDigestInputStream)
 
 J2OBJC_FIELD_SETTER(JavaSecurityDigestInputStream, digest_, JavaSecurityMessageDigest *)
+
+FOUNDATION_EXPORT void JavaSecurityDigestInputStream_initWithJavaIoInputStream_withJavaSecurityMessageDigest_(JavaSecurityDigestInputStream *self, JavaIoInputStream *stream, JavaSecurityMessageDigest *digest);
+
+FOUNDATION_EXPORT JavaSecurityDigestInputStream *new_JavaSecurityDigestInputStream_initWithJavaIoInputStream_withJavaSecurityMessageDigest_(JavaIoInputStream *stream, JavaSecurityMessageDigest *digest) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityDigestInputStream)
 
 #endif // _JavaSecurityDigestInputStream_H_

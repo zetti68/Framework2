@@ -6,29 +6,36 @@
 #ifndef _JavaSecurityPolicySpi_H_
 #define _JavaSecurityPolicySpi_H_
 
+#include "J2ObjC_header.h"
+
 @class JavaSecurityCodeSource;
 @class JavaSecurityPermission;
 @class JavaSecurityPermissionCollection;
 @class JavaSecurityProtectionDomain;
 
-#import "JreEmulation.h"
+@interface JavaSecurityPolicySpi : NSObject
 
-@interface JavaSecurityPolicySpi : NSObject {
-}
+#pragma mark Public
 
 - (instancetype)init;
+
+#pragma mark Protected
+
+- (JavaSecurityPermissionCollection *)engineGetPermissionsWithJavaSecurityCodeSource:(JavaSecurityCodeSource *)codesource;
+
+- (JavaSecurityPermissionCollection *)engineGetPermissionsWithJavaSecurityProtectionDomain:(JavaSecurityProtectionDomain *)domain;
 
 - (jboolean)engineImpliesWithJavaSecurityProtectionDomain:(JavaSecurityProtectionDomain *)domain
                                withJavaSecurityPermission:(JavaSecurityPermission *)permission;
 
 - (void)engineRefresh;
 
-- (JavaSecurityPermissionCollection *)engineGetPermissionsWithJavaSecurityCodeSource:(JavaSecurityCodeSource *)codesource;
-
-- (JavaSecurityPermissionCollection *)engineGetPermissionsWithJavaSecurityProtectionDomain:(JavaSecurityProtectionDomain *)domain;
-
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityPolicySpi_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityPolicySpi)
+
+FOUNDATION_EXPORT void JavaSecurityPolicySpi_init(JavaSecurityPolicySpi *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityPolicySpi)
 
 #endif // _JavaSecurityPolicySpi_H_

@@ -6,16 +6,14 @@
 #ifndef _JavaxCryptoSpecRC2ParameterSpec_H_
 #define _JavaxCryptoSpecRC2ParameterSpec_H_
 
-@class IOSByteArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaxCryptoSpecRC2ParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec > {
- @public
-  jint effectiveKeyBits_;
-  IOSByteArray *iv_;
-}
+@class IOSByteArray;
+
+@interface JavaxCryptoSpecRC2ParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec >
+
+#pragma mark Public
 
 - (instancetype)initWithInt:(jint)effectiveKeyBits;
 
@@ -26,20 +24,30 @@
               withByteArray:(IOSByteArray *)iv
                     withInt:(jint)offset;
 
+- (jboolean)isEqual:(id)obj;
+
 - (jint)getEffectiveKeyBits;
 
 - (IOSByteArray *)getIV;
 
-- (jboolean)isEqual:(id)obj;
-
 - (NSUInteger)hash;
-
-- (void)copyAllFieldsTo:(JavaxCryptoSpecRC2ParameterSpec *)other;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecRC2ParameterSpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecRC2ParameterSpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecRC2ParameterSpec, iv_, IOSByteArray *)
+FOUNDATION_EXPORT void JavaxCryptoSpecRC2ParameterSpec_initWithInt_(JavaxCryptoSpecRC2ParameterSpec *self, jint effectiveKeyBits);
+
+FOUNDATION_EXPORT JavaxCryptoSpecRC2ParameterSpec *new_JavaxCryptoSpecRC2ParameterSpec_initWithInt_(jint effectiveKeyBits) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecRC2ParameterSpec_initWithInt_withByteArray_(JavaxCryptoSpecRC2ParameterSpec *self, jint effectiveKeyBits, IOSByteArray *iv);
+
+FOUNDATION_EXPORT JavaxCryptoSpecRC2ParameterSpec *new_JavaxCryptoSpecRC2ParameterSpec_initWithInt_withByteArray_(jint effectiveKeyBits, IOSByteArray *iv) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecRC2ParameterSpec_initWithInt_withByteArray_withInt_(JavaxCryptoSpecRC2ParameterSpec *self, jint effectiveKeyBits, IOSByteArray *iv, jint offset);
+
+FOUNDATION_EXPORT JavaxCryptoSpecRC2ParameterSpec *new_JavaxCryptoSpecRC2ParameterSpec_initWithInt_withByteArray_withInt_(jint effectiveKeyBits, IOSByteArray *iv, jint offset) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecRC2ParameterSpec)
 
 #endif // _JavaxCryptoSpecRC2ParameterSpec_H_

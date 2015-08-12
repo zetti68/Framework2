@@ -6,37 +6,42 @@
 #ifndef _JavaSecurityCertX509CRLEntry_H_
 #define _JavaSecurityCertX509CRLEntry_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/cert/X509Extension.h"
+
 @class IOSByteArray;
 @class JavaMathBigInteger;
 @class JavaUtilDate;
 @class JavaxSecurityAuthX500X500Principal;
 
-#import "JreEmulation.h"
-#include "java/security/cert/X509Extension.h"
+@interface JavaSecurityCertX509CRLEntry : NSObject < JavaSecurityCertX509Extension >
 
-@interface JavaSecurityCertX509CRLEntry : NSObject < JavaSecurityCertX509Extension > {
-}
+#pragma mark Public
 
 - (instancetype)init;
 
 - (jboolean)isEqual:(id)other;
 
-- (NSUInteger)hash;
+- (JavaxSecurityAuthX500X500Principal *)getCertificateIssuer;
 
 - (IOSByteArray *)getEncoded;
 
-- (JavaMathBigInteger *)getSerialNumber;
-
-- (JavaxSecurityAuthX500X500Principal *)getCertificateIssuer;
-
 - (JavaUtilDate *)getRevocationDate;
 
+- (JavaMathBigInteger *)getSerialNumber;
+
 - (jboolean)hasExtensions;
+
+- (NSUInteger)hash;
 
 - (NSString *)description;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityCertX509CRLEntry_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityCertX509CRLEntry)
+
+FOUNDATION_EXPORT void JavaSecurityCertX509CRLEntry_init(JavaSecurityCertX509CRLEntry *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityCertX509CRLEntry)
 
 #endif // _JavaSecurityCertX509CRLEntry_H_

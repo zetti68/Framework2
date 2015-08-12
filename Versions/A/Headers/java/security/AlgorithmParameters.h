@@ -6,38 +6,35 @@
 #ifndef _JavaSecurityAlgorithmParameters_H_
 #define _JavaSecurityAlgorithmParameters_H_
 
+#include "J2ObjC_header.h"
+
 @class IOSByteArray;
 @class IOSClass;
 @class JavaSecurityAlgorithmParametersSpi;
 @class JavaSecurityProvider;
-@class OrgApacheHarmonySecurityFortressEngine;
 @protocol JavaSecuritySpecAlgorithmParameterSpec;
 
-#import "JreEmulation.h"
+@interface JavaSecurityAlgorithmParameters : NSObject
 
-@interface JavaSecurityAlgorithmParameters : NSObject {
- @public
-  JavaSecurityProvider *provider_;
-  JavaSecurityAlgorithmParametersSpi *spiImpl_;
-  NSString *algorithm_;
-  jboolean initialized_;
-}
+#pragma mark Public
 
-- (instancetype)initWithJavaSecurityAlgorithmParametersSpi:(JavaSecurityAlgorithmParametersSpi *)algPramSpi
-                                  withJavaSecurityProvider:(JavaSecurityProvider *)provider
-                                              withNSString:(NSString *)algorithm;
+- (NSString *)getAlgorithm;
+
+- (IOSByteArray *)getEncoded;
+
+- (IOSByteArray *)getEncodedWithNSString:(NSString *)format;
 
 + (JavaSecurityAlgorithmParameters *)getInstanceWithNSString:(NSString *)algorithm;
 
 + (JavaSecurityAlgorithmParameters *)getInstanceWithNSString:(NSString *)algorithm
-                                                withNSString:(NSString *)provider;
-
-+ (JavaSecurityAlgorithmParameters *)getInstanceWithNSString:(NSString *)algorithm
                                     withJavaSecurityProvider:(JavaSecurityProvider *)provider;
 
-- (JavaSecurityProvider *)getProvider;
++ (JavaSecurityAlgorithmParameters *)getInstanceWithNSString:(NSString *)algorithm
+                                                withNSString:(NSString *)provider;
 
-- (NSString *)getAlgorithm;
+- (id)getParameterSpecWithIOSClass:(IOSClass *)paramSpec;
+
+- (JavaSecurityProvider *)getProvider;
 
 - (void)init__WithJavaSecuritySpecAlgorithmParameterSpec:(id<JavaSecuritySpecAlgorithmParameterSpec>)paramSpec OBJC_METHOD_FAMILY_NONE;
 
@@ -46,29 +43,28 @@
 - (void)init__WithByteArray:(IOSByteArray *)params
                withNSString:(NSString *)format OBJC_METHOD_FAMILY_NONE;
 
-- (id)getParameterSpecWithIOSClass:(IOSClass *)paramSpec;
-
-- (IOSByteArray *)getEncoded;
-
-- (IOSByteArray *)getEncodedWithNSString:(NSString *)format;
-
 - (NSString *)description;
 
-- (void)copyAllFieldsTo:(JavaSecurityAlgorithmParameters *)other;
+#pragma mark Protected
+
+- (instancetype)initWithJavaSecurityAlgorithmParametersSpi:(JavaSecurityAlgorithmParametersSpi *)algPramSpi
+                                  withJavaSecurityProvider:(JavaSecurityProvider *)provider
+                                              withNSString:(NSString *)algorithm;
 
 @end
 
-FOUNDATION_EXPORT BOOL JavaSecurityAlgorithmParameters_initialized;
 J2OBJC_STATIC_INIT(JavaSecurityAlgorithmParameters)
 
-J2OBJC_FIELD_SETTER(JavaSecurityAlgorithmParameters, provider_, JavaSecurityProvider *)
-J2OBJC_FIELD_SETTER(JavaSecurityAlgorithmParameters, spiImpl_, JavaSecurityAlgorithmParametersSpi *)
-J2OBJC_FIELD_SETTER(JavaSecurityAlgorithmParameters, algorithm_, NSString *)
+FOUNDATION_EXPORT void JavaSecurityAlgorithmParameters_initWithJavaSecurityAlgorithmParametersSpi_withJavaSecurityProvider_withNSString_(JavaSecurityAlgorithmParameters *self, JavaSecurityAlgorithmParametersSpi *algPramSpi, JavaSecurityProvider *provider, NSString *algorithm);
 
-FOUNDATION_EXPORT NSString *JavaSecurityAlgorithmParameters_SEVICE_;
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityAlgorithmParameters, SEVICE_, NSString *)
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameters *new_JavaSecurityAlgorithmParameters_initWithJavaSecurityAlgorithmParametersSpi_withJavaSecurityProvider_withNSString_(JavaSecurityAlgorithmParametersSpi *algPramSpi, JavaSecurityProvider *provider, NSString *algorithm) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgApacheHarmonySecurityFortressEngine *JavaSecurityAlgorithmParameters_ENGINE_;
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityAlgorithmParameters, ENGINE_, OrgApacheHarmonySecurityFortressEngine *)
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameters *JavaSecurityAlgorithmParameters_getInstanceWithNSString_(NSString *algorithm);
+
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameters *JavaSecurityAlgorithmParameters_getInstanceWithNSString_withNSString_(NSString *algorithm, NSString *provider);
+
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameters *JavaSecurityAlgorithmParameters_getInstanceWithNSString_withJavaSecurityProvider_(NSString *algorithm, JavaSecurityProvider *provider);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityAlgorithmParameters)
 
 #endif // _JavaSecurityAlgorithmParameters_H_

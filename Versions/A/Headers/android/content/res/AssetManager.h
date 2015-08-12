@@ -6,9 +6,9 @@
 #ifndef _AndroidContentResAssetManager_H_
 #define _AndroidContentResAssetManager_H_
 
-@class JavaIoInputStream;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@class JavaIoInputStream;
 
 @protocol AndroidContentResAssetManager < NSObject, JavaObject >
 
@@ -16,6 +16,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidContentResAssetManager_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidContentResAssetManager)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidContentResAssetManager)
 
 #endif // _AndroidContentResAssetManager_H_

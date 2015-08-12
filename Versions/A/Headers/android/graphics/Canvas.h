@@ -6,19 +6,19 @@
 #ifndef _AndroidGraphicsCanvas_H_
 #define _AndroidGraphicsCanvas_H_
 
+#include "J2ObjC_header.h"
+
 @class AndroidGraphicsPaint;
 @class AndroidGraphicsPath;
 @class AndroidGraphicsRect;
 @protocol AndroidGraphicsBitmap;
 
-#import "JreEmulation.h"
-
-#define AndroidGraphicsCanvas_ALL_SAVE_FLAG 31
-#define AndroidGraphicsCanvas_CLIP_SAVE_FLAG 2
-#define AndroidGraphicsCanvas_CLIP_TO_LAYER_SAVE_FLAG 16
-#define AndroidGraphicsCanvas_FULL_COLOR_LAYER_SAVE_FLAG 8
-#define AndroidGraphicsCanvas_HAS_ALPHA_LAYER_SAVE_FLAG 4
 #define AndroidGraphicsCanvas_MATRIX_SAVE_FLAG 1
+#define AndroidGraphicsCanvas_CLIP_SAVE_FLAG 2
+#define AndroidGraphicsCanvas_HAS_ALPHA_LAYER_SAVE_FLAG 4
+#define AndroidGraphicsCanvas_FULL_COLOR_LAYER_SAVE_FLAG 8
+#define AndroidGraphicsCanvas_CLIP_TO_LAYER_SAVE_FLAG 16
+#define AndroidGraphicsCanvas_ALL_SAVE_FLAG 31
 
 @protocol AndroidGraphicsCanvas < NSObject, JavaObject >
 
@@ -61,7 +61,7 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidGraphicsCanvas_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidGraphicsCanvas)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsCanvas, MATRIX_SAVE_FLAG, jint)
 
@@ -74,5 +74,7 @@ J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsCanvas, FULL_COLOR_LAYER_SAVE_FLAG, ji
 J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsCanvas, CLIP_TO_LAYER_SAVE_FLAG, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsCanvas, ALL_SAVE_FLAG, jint)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsCanvas)
 
 #endif // _AndroidGraphicsCanvas_H_

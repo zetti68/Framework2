@@ -6,16 +6,23 @@
 #ifndef _AndroidDatabaseSqliteSQLiteException_H_
 #define _AndroidDatabaseSqliteSQLiteException_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Exception.h"
 
-@interface AndroidDatabaseSqliteSQLiteException : JavaLangException {
-}
+@interface AndroidDatabaseSqliteSQLiteException : JavaLangException
+
+#pragma mark Public
 
 - (instancetype)init;
 
 @end
 
-__attribute__((always_inline)) inline void AndroidDatabaseSqliteSQLiteException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidDatabaseSqliteSQLiteException)
+
+FOUNDATION_EXPORT void AndroidDatabaseSqliteSQLiteException_init(AndroidDatabaseSqliteSQLiteException *self);
+
+FOUNDATION_EXPORT AndroidDatabaseSqliteSQLiteException *new_AndroidDatabaseSqliteSQLiteException_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidDatabaseSqliteSQLiteException)
 
 #endif // _AndroidDatabaseSqliteSQLiteException_H_

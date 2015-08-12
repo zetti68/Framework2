@@ -6,9 +6,9 @@
 #ifndef _AndroidGraphicsDrawableDrawable_H_
 #define _AndroidGraphicsDrawableDrawable_H_
 
-@protocol AndroidGraphicsCanvas;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol AndroidGraphicsCanvas;
 
 @protocol AndroidGraphicsDrawableDrawable < NSObject, JavaObject >
 
@@ -25,6 +25,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidGraphicsDrawableDrawable_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidGraphicsDrawableDrawable)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsDrawableDrawable)
 
 #endif // _AndroidGraphicsDrawableDrawable_H_

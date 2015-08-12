@@ -6,21 +6,16 @@
 #ifndef _JavaSecuritySigner_H_
 #define _JavaSecuritySigner_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/Identity.h"
+
 @class JavaSecurityIdentityScope;
 @class JavaSecurityKeyPair;
 @protocol JavaSecurityPrivateKey;
 
-#import "JreEmulation.h"
-#include "java/security/Identity.h"
+@interface JavaSecuritySigner : JavaSecurityIdentity
 
-#define JavaSecuritySigner_serialVersionUID -1763464102261361480LL
-
-@interface JavaSecuritySigner : JavaSecurityIdentity {
- @public
-  id<JavaSecurityPrivateKey> privateKey_;
-}
-
-- (instancetype)init;
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)name;
 
@@ -33,14 +28,20 @@
 
 - (NSString *)description;
 
-- (void)copyAllFieldsTo:(JavaSecuritySigner *)other;
+#pragma mark Protected
+
+- (instancetype)init;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecuritySigner_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecuritySigner)
 
-J2OBJC_FIELD_SETTER(JavaSecuritySigner, privateKey_, id<JavaSecurityPrivateKey>)
+FOUNDATION_EXPORT void JavaSecuritySigner_init(JavaSecuritySigner *self);
 
-J2OBJC_STATIC_FIELD_GETTER(JavaSecuritySigner, serialVersionUID, jlong)
+FOUNDATION_EXPORT void JavaSecuritySigner_initWithNSString_(JavaSecuritySigner *self, NSString *name);
+
+FOUNDATION_EXPORT void JavaSecuritySigner_initWithNSString_withJavaSecurityIdentityScope_(JavaSecuritySigner *self, NSString *name, JavaSecurityIdentityScope *scope);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecuritySigner)
 
 #endif // _JavaSecuritySigner_H_

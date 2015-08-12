@@ -6,9 +6,9 @@
 #ifndef _JavaSecurityInterfacesDSAParams_H_
 #define _JavaSecurityInterfacesDSAParams_H_
 
-@class JavaMathBigInteger;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@class JavaMathBigInteger;
 
 @protocol JavaSecurityInterfacesDSAParams < NSObject, JavaObject >
 
@@ -20,6 +20,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityInterfacesDSAParams_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityInterfacesDSAParams)
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityInterfacesDSAParams)
 
 #endif // _JavaSecurityInterfacesDSAParams_H_

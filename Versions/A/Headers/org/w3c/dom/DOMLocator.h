@@ -6,9 +6,9 @@
 #ifndef _OrgW3cDomDOMLocator_H_
 #define _OrgW3cDomDOMLocator_H_
 
-@protocol OrgW3cDomNode;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol OrgW3cDomNode;
 
 @protocol OrgW3cDomDOMLocator < NSObject, JavaObject >
 
@@ -26,6 +26,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDOMLocator_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDOMLocator)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDOMLocator)
 
 #endif // _OrgW3cDomDOMLocator_H_

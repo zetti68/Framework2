@@ -6,9 +6,9 @@
 #ifndef _OrgW3cDomDOMConfiguration_H_
 #define _OrgW3cDomDOMConfiguration_H_
 
-@protocol OrgW3cDomDOMStringList;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol OrgW3cDomDOMStringList;
 
 @protocol OrgW3cDomDOMConfiguration < NSObject, JavaObject >
 
@@ -24,6 +24,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDOMConfiguration_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDOMConfiguration)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDOMConfiguration)
 
 #endif // _OrgW3cDomDOMConfiguration_H_

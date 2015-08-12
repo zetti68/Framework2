@@ -6,38 +6,45 @@
 #ifndef _JavaSecurityUnresolvedPermission_H_
 #define _JavaSecurityUnresolvedPermission_H_
 
-@class IOSObjectArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 #include "java/security/Permission.h"
 
-@interface JavaSecurityUnresolvedPermission : JavaSecurityPermission < JavaIoSerializable > {
-}
+@class IOSObjectArray;
+
+@interface JavaSecurityUnresolvedPermission : JavaSecurityPermission < JavaIoSerializable >
+
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)type
                     withNSString:(NSString *)name
                     withNSString:(NSString *)actions
 withJavaSecurityCertCertificateArray:(IOSObjectArray *)certs;
 
-- (NSString *)getUnresolvedName;
-
-- (NSString *)getUnresolvedActions;
-
-- (NSString *)getUnresolvedType;
-
-- (IOSObjectArray *)getUnresolvedCerts;
+- (jboolean)isEqual:(id)pObj;
 
 - (NSString *)getActions;
 
-- (jboolean)impliesWithJavaSecurityPermission:(JavaSecurityPermission *)permission;
+- (NSString *)getUnresolvedActions;
 
-- (jboolean)isEqual:(id)pObj;
+- (IOSObjectArray *)getUnresolvedCerts;
+
+- (NSString *)getUnresolvedName;
+
+- (NSString *)getUnresolvedType;
 
 - (NSUInteger)hash;
 
+- (jboolean)impliesWithJavaSecurityPermission:(JavaSecurityPermission *)permission;
+
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityUnresolvedPermission_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityUnresolvedPermission)
+
+FOUNDATION_EXPORT void JavaSecurityUnresolvedPermission_initWithNSString_withNSString_withNSString_withJavaSecurityCertCertificateArray_(JavaSecurityUnresolvedPermission *self, NSString *type, NSString *name, NSString *actions, IOSObjectArray *certs);
+
+FOUNDATION_EXPORT JavaSecurityUnresolvedPermission *new_JavaSecurityUnresolvedPermission_initWithNSString_withNSString_withNSString_withJavaSecurityCertCertificateArray_(NSString *type, NSString *name, NSString *actions, IOSObjectArray *certs) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityUnresolvedPermission)
 
 #endif // _JavaSecurityUnresolvedPermission_H_

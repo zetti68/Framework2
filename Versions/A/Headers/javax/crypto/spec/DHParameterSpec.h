@@ -6,17 +6,14 @@
 #ifndef _JavaxCryptoSpecDHParameterSpec_H_
 #define _JavaxCryptoSpecDHParameterSpec_H_
 
-@class JavaMathBigInteger;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaxCryptoSpecDHParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec > {
- @public
-  JavaMathBigInteger *p_;
-  JavaMathBigInteger *g_;
-  jint l_;
-}
+@class JavaMathBigInteger;
+
+@interface JavaxCryptoSpecDHParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec >
+
+#pragma mark Public
 
 - (instancetype)initWithJavaMathBigInteger:(JavaMathBigInteger *)p
                     withJavaMathBigInteger:(JavaMathBigInteger *)g;
@@ -25,19 +22,24 @@
                     withJavaMathBigInteger:(JavaMathBigInteger *)g
                                    withInt:(jint)l;
 
-- (JavaMathBigInteger *)getP;
-
 - (JavaMathBigInteger *)getG;
 
 - (jint)getL;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecDHParameterSpec *)other;
+- (JavaMathBigInteger *)getP;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecDHParameterSpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecDHParameterSpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecDHParameterSpec, p_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecDHParameterSpec, g_, JavaMathBigInteger *)
+FOUNDATION_EXPORT void JavaxCryptoSpecDHParameterSpec_initWithJavaMathBigInteger_withJavaMathBigInteger_(JavaxCryptoSpecDHParameterSpec *self, JavaMathBigInteger *p, JavaMathBigInteger *g);
+
+FOUNDATION_EXPORT JavaxCryptoSpecDHParameterSpec *new_JavaxCryptoSpecDHParameterSpec_initWithJavaMathBigInteger_withJavaMathBigInteger_(JavaMathBigInteger *p, JavaMathBigInteger *g) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecDHParameterSpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withInt_(JavaxCryptoSpecDHParameterSpec *self, JavaMathBigInteger *p, JavaMathBigInteger *g, jint l);
+
+FOUNDATION_EXPORT JavaxCryptoSpecDHParameterSpec *new_JavaxCryptoSpecDHParameterSpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withInt_(JavaMathBigInteger *p, JavaMathBigInteger *g, jint l) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecDHParameterSpec)
 
 #endif // _JavaxCryptoSpecDHParameterSpec_H_

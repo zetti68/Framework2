@@ -6,68 +6,62 @@
 #ifndef _JavaSecurityAlgorithmParameterGenerator_H_
 #define _JavaSecurityAlgorithmParameterGenerator_H_
 
+#include "J2ObjC_header.h"
+
 @class JavaSecurityAlgorithmParameterGeneratorSpi;
 @class JavaSecurityAlgorithmParameters;
 @class JavaSecurityProvider;
 @class JavaSecuritySecureRandom;
-@class OrgApacheHarmonySecurityFortressEngine;
 @protocol JavaSecuritySpecAlgorithmParameterSpec;
 
-#import "JreEmulation.h"
+@interface JavaSecurityAlgorithmParameterGenerator : NSObject
 
-@interface JavaSecurityAlgorithmParameterGenerator : NSObject {
- @public
-  JavaSecurityProvider *provider_;
-  JavaSecurityAlgorithmParameterGeneratorSpi *spiImpl_;
-  NSString *algorithm_;
-}
+#pragma mark Public
 
-- (instancetype)initWithJavaSecurityAlgorithmParameterGeneratorSpi:(JavaSecurityAlgorithmParameterGeneratorSpi *)paramGenSpi
-                                          withJavaSecurityProvider:(JavaSecurityProvider *)provider
-                                                      withNSString:(NSString *)algorithm;
+- (JavaSecurityAlgorithmParameters *)generateParameters;
 
 - (NSString *)getAlgorithm;
 
 + (JavaSecurityAlgorithmParameterGenerator *)getInstanceWithNSString:(NSString *)algorithm;
 
 + (JavaSecurityAlgorithmParameterGenerator *)getInstanceWithNSString:(NSString *)algorithm
-                                                        withNSString:(NSString *)provider;
-
-+ (JavaSecurityAlgorithmParameterGenerator *)getInstanceWithNSString:(NSString *)algorithm
                                             withJavaSecurityProvider:(JavaSecurityProvider *)provider;
 
++ (JavaSecurityAlgorithmParameterGenerator *)getInstanceWithNSString:(NSString *)algorithm
+                                                        withNSString:(NSString *)provider;
+
 - (JavaSecurityProvider *)getProvider;
-
-- (void)init__WithInt:(jint)size OBJC_METHOD_FAMILY_NONE;
-
-- (void)init__WithInt:(jint)size
-withJavaSecuritySecureRandom:(JavaSecuritySecureRandom *)random OBJC_METHOD_FAMILY_NONE;
 
 - (void)init__WithJavaSecuritySpecAlgorithmParameterSpec:(id<JavaSecuritySpecAlgorithmParameterSpec>)genParamSpec OBJC_METHOD_FAMILY_NONE;
 
 - (void)init__WithJavaSecuritySpecAlgorithmParameterSpec:(id<JavaSecuritySpecAlgorithmParameterSpec>)genParamSpec
                             withJavaSecuritySecureRandom:(JavaSecuritySecureRandom *)random OBJC_METHOD_FAMILY_NONE;
 
-- (JavaSecurityAlgorithmParameters *)generateParameters;
+- (void)init__WithInt:(jint)size OBJC_METHOD_FAMILY_NONE;
 
-- (void)copyAllFieldsTo:(JavaSecurityAlgorithmParameterGenerator *)other;
+- (void)init__WithInt:(jint)size
+withJavaSecuritySecureRandom:(JavaSecuritySecureRandom *)random OBJC_METHOD_FAMILY_NONE;
+
+#pragma mark Protected
+
+- (instancetype)initWithJavaSecurityAlgorithmParameterGeneratorSpi:(JavaSecurityAlgorithmParameterGeneratorSpi *)paramGenSpi
+                                          withJavaSecurityProvider:(JavaSecurityProvider *)provider
+                                                      withNSString:(NSString *)algorithm;
 
 @end
 
-FOUNDATION_EXPORT BOOL JavaSecurityAlgorithmParameterGenerator_initialized;
 J2OBJC_STATIC_INIT(JavaSecurityAlgorithmParameterGenerator)
 
-J2OBJC_FIELD_SETTER(JavaSecurityAlgorithmParameterGenerator, provider_, JavaSecurityProvider *)
-J2OBJC_FIELD_SETTER(JavaSecurityAlgorithmParameterGenerator, spiImpl_, JavaSecurityAlgorithmParameterGeneratorSpi *)
-J2OBJC_FIELD_SETTER(JavaSecurityAlgorithmParameterGenerator, algorithm_, NSString *)
+FOUNDATION_EXPORT void JavaSecurityAlgorithmParameterGenerator_initWithJavaSecurityAlgorithmParameterGeneratorSpi_withJavaSecurityProvider_withNSString_(JavaSecurityAlgorithmParameterGenerator *self, JavaSecurityAlgorithmParameterGeneratorSpi *paramGenSpi, JavaSecurityProvider *provider, NSString *algorithm);
 
-FOUNDATION_EXPORT NSString *JavaSecurityAlgorithmParameterGenerator_SERVICE_;
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityAlgorithmParameterGenerator, SERVICE_, NSString *)
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameterGenerator *new_JavaSecurityAlgorithmParameterGenerator_initWithJavaSecurityAlgorithmParameterGeneratorSpi_withJavaSecurityProvider_withNSString_(JavaSecurityAlgorithmParameterGeneratorSpi *paramGenSpi, JavaSecurityProvider *provider, NSString *algorithm) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT OrgApacheHarmonySecurityFortressEngine *JavaSecurityAlgorithmParameterGenerator_ENGINE_;
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityAlgorithmParameterGenerator, ENGINE_, OrgApacheHarmonySecurityFortressEngine *)
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameterGenerator *JavaSecurityAlgorithmParameterGenerator_getInstanceWithNSString_(NSString *algorithm);
 
-FOUNDATION_EXPORT JavaSecuritySecureRandom *JavaSecurityAlgorithmParameterGenerator_RANDOM_;
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityAlgorithmParameterGenerator, RANDOM_, JavaSecuritySecureRandom *)
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameterGenerator *JavaSecurityAlgorithmParameterGenerator_getInstanceWithNSString_withNSString_(NSString *algorithm, NSString *provider);
+
+FOUNDATION_EXPORT JavaSecurityAlgorithmParameterGenerator *JavaSecurityAlgorithmParameterGenerator_getInstanceWithNSString_withJavaSecurityProvider_(NSString *algorithm, JavaSecurityProvider *provider);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityAlgorithmParameterGenerator)
 
 #endif // _JavaSecurityAlgorithmParameterGenerator_H_

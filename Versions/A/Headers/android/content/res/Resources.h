@@ -6,6 +6,8 @@
 #ifndef _AndroidContentResResources_H_
 #define _AndroidContentResResources_H_
 
+#include "J2ObjC_header.h"
+
 @class AndroidUtilTypedValue;
 @class IOSIntArray;
 @protocol AndroidContentResDisplayMetrics;
@@ -13,8 +15,6 @@
 @protocol AndroidGraphicsDrawableDrawable;
 @protocol AndroidUtilAttributeSet;
 @protocol JavaLangCharSequence;
-
-#import "JreEmulation.h"
 
 @protocol AndroidContentResResources < NSObject, JavaObject >
 
@@ -43,7 +43,9 @@ withAndroidUtilTypedValue:(AndroidUtilTypedValue *)pOut
 
 @end
 
-__attribute__((always_inline)) inline void AndroidContentResResources_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidContentResResources)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidContentResResources)
 
 @protocol AndroidContentResResources_Theme < NSObject, JavaObject >
 
@@ -54,6 +56,8 @@ __attribute__((always_inline)) inline void AndroidContentResResources_init() {}
 
 @end
 
-__attribute__((always_inline)) inline void AndroidContentResResources_Theme_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidContentResResources_Theme)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidContentResResources_Theme)
 
 #endif // _AndroidContentResResources_H_

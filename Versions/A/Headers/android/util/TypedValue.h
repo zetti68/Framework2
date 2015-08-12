@@ -6,81 +6,78 @@
 #ifndef _AndroidUtilTypedValue_H_
 #define _AndroidUtilTypedValue_H_
 
-@class AndroidUtilTypedValue_TypeEnum;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Enum.h"
 
-@interface AndroidUtilTypedValue : NSObject {
- @public
-  id mValue_;
-  AndroidUtilTypedValue_TypeEnum *mType_;
-}
+@interface AndroidUtilTypedValue : NSObject
 
-- (void)setBooleanWithBoolean:(jboolean)pValue;
-
-- (jboolean)getBoolean;
-
-- (void)setFloatWithFloat:(jfloat)pValue;
-
-- (jfloat)getFloat;
-
-- (void)setIntWithInt:(jint)pValue;
-
-- (jint)getInt;
-
-- (void)setStringWithNSString:(NSString *)pValue;
-
-- (NSString *)getString;
+#pragma mark Public
 
 - (instancetype)init;
 
-- (void)copyAllFieldsTo:(AndroidUtilTypedValue *)other;
+- (jboolean)getBoolean;
+
+- (jfloat)getFloat;
+
+- (jint)getInt;
+
+- (NSString *)getString;
+
+- (void)setBooleanWithBoolean:(jboolean)pValue;
+
+- (void)setFloatWithFloat:(jfloat)pValue;
+
+- (void)setIntWithInt:(jint)pValue;
+
+- (void)setStringWithNSString:(NSString *)pValue;
 
 @end
 
-__attribute__((always_inline)) inline void AndroidUtilTypedValue_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidUtilTypedValue)
 
-J2OBJC_FIELD_SETTER(AndroidUtilTypedValue, mValue_, id)
-J2OBJC_FIELD_SETTER(AndroidUtilTypedValue, mType_, AndroidUtilTypedValue_TypeEnum *)
+FOUNDATION_EXPORT void AndroidUtilTypedValue_init(AndroidUtilTypedValue *self);
 
-typedef enum {
+FOUNDATION_EXPORT AndroidUtilTypedValue *new_AndroidUtilTypedValue_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidUtilTypedValue)
+
+typedef NS_ENUM(NSUInteger, AndroidUtilTypedValue_Type) {
   AndroidUtilTypedValue_Type_FLOAT = 0,
   AndroidUtilTypedValue_Type_INTEGER = 1,
   AndroidUtilTypedValue_Type_BOOLEAN = 2,
   AndroidUtilTypedValue_Type_STRING = 3,
-} AndroidUtilTypedValue_Type;
+};
 
-@interface AndroidUtilTypedValue_TypeEnum : JavaLangEnum < NSCopying > {
-}
+@interface AndroidUtilTypedValue_TypeEnum : JavaLangEnum < NSCopying >
 
-- (instancetype)initWithNSString:(NSString *)__name
-                         withInt:(jint)__ordinal;
+#pragma mark Package-Private
 
 + (IOSObjectArray *)values;
 FOUNDATION_EXPORT IOSObjectArray *AndroidUtilTypedValue_TypeEnum_values();
 
 + (AndroidUtilTypedValue_TypeEnum *)valueOfWithNSString:(NSString *)name;
+FOUNDATION_EXPORT AndroidUtilTypedValue_TypeEnum *AndroidUtilTypedValue_TypeEnum_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT AndroidUtilTypedValue_TypeEnum *AndroidUtilTypedValue_TypeEnum_valueOfWithNSString_(NSString *name);- (id)copyWithZone:(NSZone *)zone;
+- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
-FOUNDATION_EXPORT BOOL AndroidUtilTypedValue_TypeEnum_initialized;
 J2OBJC_STATIC_INIT(AndroidUtilTypedValue_TypeEnum)
 
 FOUNDATION_EXPORT AndroidUtilTypedValue_TypeEnum *AndroidUtilTypedValue_TypeEnum_values_[];
 
 #define AndroidUtilTypedValue_TypeEnum_FLOAT AndroidUtilTypedValue_TypeEnum_values_[AndroidUtilTypedValue_Type_FLOAT]
-J2OBJC_STATIC_FIELD_GETTER(AndroidUtilTypedValue_TypeEnum, FLOAT, AndroidUtilTypedValue_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidUtilTypedValue_TypeEnum, FLOAT)
 
 #define AndroidUtilTypedValue_TypeEnum_INTEGER AndroidUtilTypedValue_TypeEnum_values_[AndroidUtilTypedValue_Type_INTEGER]
-J2OBJC_STATIC_FIELD_GETTER(AndroidUtilTypedValue_TypeEnum, INTEGER, AndroidUtilTypedValue_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidUtilTypedValue_TypeEnum, INTEGER)
 
 #define AndroidUtilTypedValue_TypeEnum_BOOLEAN AndroidUtilTypedValue_TypeEnum_values_[AndroidUtilTypedValue_Type_BOOLEAN]
-J2OBJC_STATIC_FIELD_GETTER(AndroidUtilTypedValue_TypeEnum, BOOLEAN, AndroidUtilTypedValue_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidUtilTypedValue_TypeEnum, BOOLEAN)
 
 #define AndroidUtilTypedValue_TypeEnum_STRING AndroidUtilTypedValue_TypeEnum_values_[AndroidUtilTypedValue_Type_STRING]
-J2OBJC_STATIC_FIELD_GETTER(AndroidUtilTypedValue_TypeEnum, STRING, AndroidUtilTypedValue_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidUtilTypedValue_TypeEnum, STRING)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidUtilTypedValue_TypeEnum)
 
 #endif // _AndroidUtilTypedValue_H_

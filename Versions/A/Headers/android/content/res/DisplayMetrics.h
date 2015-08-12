@@ -6,7 +6,7 @@
 #ifndef _AndroidContentResDisplayMetrics_H_
 #define _AndroidContentResDisplayMetrics_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 #define AndroidContentResDisplayMetrics_density 0.0f
 #define AndroidContentResDisplayMetrics_widthPixels 0.0f
@@ -15,10 +15,12 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidContentResDisplayMetrics_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidContentResDisplayMetrics)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidContentResDisplayMetrics, density, jfloat)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidContentResDisplayMetrics, widthPixels, jfloat)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidContentResDisplayMetrics)
 
 #endif // _AndroidContentResDisplayMetrics_H_

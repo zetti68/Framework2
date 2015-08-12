@@ -6,17 +6,16 @@
 #ifndef _JavaxCryptoSpecDESedeKeySpec_H_
 #define _JavaxCryptoSpecDESedeKeySpec_H_
 
-@class IOSByteArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/KeySpec.h"
+
+@class IOSByteArray;
 
 #define JavaxCryptoSpecDESedeKeySpec_DES_EDE_KEY_LEN 24
 
-@interface JavaxCryptoSpecDESedeKeySpec : NSObject < JavaSecuritySpecKeySpec > {
- @public
-  IOSByteArray *key_;
-}
+@interface JavaxCryptoSpecDESedeKeySpec : NSObject < JavaSecuritySpecKeySpec >
+
+#pragma mark Public
 
 - (instancetype)initWithByteArray:(IOSByteArray *)key;
 
@@ -28,14 +27,22 @@
 + (jboolean)isParityAdjustedWithByteArray:(IOSByteArray *)key
                                   withInt:(jint)offset;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecDESedeKeySpec *)other;
-
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecDESedeKeySpec_init() {}
-
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecDESedeKeySpec, key_, IOSByteArray *)
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecDESedeKeySpec)
 
 J2OBJC_STATIC_FIELD_GETTER(JavaxCryptoSpecDESedeKeySpec, DES_EDE_KEY_LEN, jint)
+
+FOUNDATION_EXPORT void JavaxCryptoSpecDESedeKeySpec_initWithByteArray_(JavaxCryptoSpecDESedeKeySpec *self, IOSByteArray *key);
+
+FOUNDATION_EXPORT JavaxCryptoSpecDESedeKeySpec *new_JavaxCryptoSpecDESedeKeySpec_initWithByteArray_(IOSByteArray *key) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecDESedeKeySpec_initWithByteArray_withInt_(JavaxCryptoSpecDESedeKeySpec *self, IOSByteArray *key, jint offset);
+
+FOUNDATION_EXPORT JavaxCryptoSpecDESedeKeySpec *new_JavaxCryptoSpecDESedeKeySpec_initWithByteArray_withInt_(IOSByteArray *key, jint offset) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT jboolean JavaxCryptoSpecDESedeKeySpec_isParityAdjustedWithByteArray_withInt_(IOSByteArray *key, jint offset);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecDESedeKeySpec)
 
 #endif // _JavaxCryptoSpecDESedeKeySpec_H_

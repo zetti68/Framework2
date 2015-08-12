@@ -6,13 +6,13 @@
 #ifndef _AndroidDatabaseCursor_H_
 #define _AndroidDatabaseCursor_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
-#define AndroidDatabaseCursor_FIELD_TYPE_BLOB 4
-#define AndroidDatabaseCursor_FIELD_TYPE_FLOAT 2
-#define AndroidDatabaseCursor_FIELD_TYPE_INTEGER 1
 #define AndroidDatabaseCursor_FIELD_TYPE_NULL 0
+#define AndroidDatabaseCursor_FIELD_TYPE_INTEGER 1
+#define AndroidDatabaseCursor_FIELD_TYPE_FLOAT 2
 #define AndroidDatabaseCursor_FIELD_TYPE_STRING 3
+#define AndroidDatabaseCursor_FIELD_TYPE_BLOB 4
 
 @protocol AndroidDatabaseCursor < NSObject, JavaObject >
 
@@ -40,7 +40,7 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidDatabaseCursor_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidDatabaseCursor)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidDatabaseCursor, FIELD_TYPE_NULL, jint)
 
@@ -51,5 +51,7 @@ J2OBJC_STATIC_FIELD_GETTER(AndroidDatabaseCursor, FIELD_TYPE_FLOAT, jint)
 J2OBJC_STATIC_FIELD_GETTER(AndroidDatabaseCursor, FIELD_TYPE_STRING, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidDatabaseCursor, FIELD_TYPE_BLOB, jint)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidDatabaseCursor)
 
 #endif // _AndroidDatabaseCursor_H_

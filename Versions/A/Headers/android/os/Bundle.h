@@ -6,55 +6,62 @@
 #ifndef _AndroidOsBundle_H_
 #define _AndroidOsBundle_H_
 
+#include "J2ObjC_header.h"
+
 @class JavaUtilArrayList;
 @protocol AndroidOsParcelable;
 
-#import "JreEmulation.h"
+@interface AndroidOsBundle : NSObject
 
-@interface AndroidOsBundle : NSObject {
-}
+#pragma mark Public
 
 - (instancetype)init;
-
-- (jint)getIntWithNSString:(NSString *)pKey;
 
 - (jboolean)getBooleanWithNSString:(NSString *)pKey
                        withBoolean:(jboolean)pValue;
 
-- (void)putIntWithNSString:(NSString *)pKey
-                   withInt:(jint)pValue;
-
-- (void)putBooleanWithNSString:(NSString *)pKey
-                   withBoolean:(jboolean)pValue;
-
-- (void)putParcelableWithNSString:(NSString *)pKey
-          withAndroidOsParcelable:(id<AndroidOsParcelable>)pValue;
-
-- (void)putStringWithNSString:(NSString *)pKey
-                 withNSString:(NSString *)pValue;
-
-- (void)putDoubleWithNSString:(NSString *)pKey
-                   withDouble:(jdouble)pValue;
-
-- (id)getParcelableWithNSString:(NSString *)pKey;
-
-- (NSString *)getStringWithNSString:(NSString *)pKey;
-
 - (jdouble)getDoubleWithNSString:(NSString *)pKey;
+
+- (jint)getIntWithNSString:(NSString *)pKey;
 
 - (jint)getIntWithNSString:(NSString *)pKey
                    withInt:(jint)pDefault;
 
+- (id)getParcelableWithNSString:(NSString *)pKey;
+
+- (JavaUtilArrayList *)getParcelableArrayListWithNSString:(NSString *)pKey;
+
+- (NSString *)getStringWithNSString:(NSString *)pKey;
+
 - (NSString *)getStringWithNSString:(NSString *)pKey
                        withNSString:(NSString *)pDefault;
 
-- (JavaUtilArrayList *)getParcelableArrayListWithNSString:(NSString *)pKey;
+- (void)putBooleanWithNSString:(NSString *)pKey
+                   withBoolean:(jboolean)pValue;
+
+- (void)putDoubleWithNSString:(NSString *)pKey
+                   withDouble:(jdouble)pValue;
+
+- (void)putIntWithNSString:(NSString *)pKey
+                   withInt:(jint)pValue;
+
+- (void)putParcelableWithNSString:(NSString *)pKey
+          withAndroidOsParcelable:(id<AndroidOsParcelable>)pValue;
 
 - (void)putParcelableArrayListWithNSString:(NSString *)pKey
                      withJavaUtilArrayList:(JavaUtilArrayList *)pValue;
 
+- (void)putStringWithNSString:(NSString *)pKey
+                 withNSString:(NSString *)pValue;
+
 @end
 
-__attribute__((always_inline)) inline void AndroidOsBundle_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidOsBundle)
+
+FOUNDATION_EXPORT void AndroidOsBundle_init(AndroidOsBundle *self);
+
+FOUNDATION_EXPORT AndroidOsBundle *new_AndroidOsBundle_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidOsBundle)
 
 #endif // _AndroidOsBundle_H_

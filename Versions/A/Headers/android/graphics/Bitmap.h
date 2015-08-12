@@ -6,12 +6,14 @@
 #ifndef _AndroidGraphicsBitmap_H_
 #define _AndroidGraphicsBitmap_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 @protocol AndroidGraphicsBitmap < NSObject, JavaObject >
 
 @end
 
-__attribute__((always_inline)) inline void AndroidGraphicsBitmap_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidGraphicsBitmap)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsBitmap)
 
 #endif // _AndroidGraphicsBitmap_H_

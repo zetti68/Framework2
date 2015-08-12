@@ -6,12 +6,14 @@
 #ifndef _AndroidDatabaseDatabaseErrorHandler_H_
 #define _AndroidDatabaseDatabaseErrorHandler_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 @protocol AndroidDatabaseDatabaseErrorHandler < NSObject, JavaObject >
 
 @end
 
-__attribute__((always_inline)) inline void AndroidDatabaseDatabaseErrorHandler_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidDatabaseDatabaseErrorHandler)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidDatabaseDatabaseErrorHandler)
 
 #endif // _AndroidDatabaseDatabaseErrorHandler_H_

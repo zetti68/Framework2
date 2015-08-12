@@ -6,36 +6,33 @@
 #ifndef _JavaxCryptoSpecDHPrivateKeySpec_H_
 #define _JavaxCryptoSpecDHPrivateKeySpec_H_
 
-@class JavaMathBigInteger;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/KeySpec.h"
 
-@interface JavaxCryptoSpecDHPrivateKeySpec : NSObject < JavaSecuritySpecKeySpec > {
- @public
-  JavaMathBigInteger *x_;
-  JavaMathBigInteger *p_;
-  JavaMathBigInteger *g_;
-}
+@class JavaMathBigInteger;
+
+@interface JavaxCryptoSpecDHPrivateKeySpec : NSObject < JavaSecuritySpecKeySpec >
+
+#pragma mark Public
 
 - (instancetype)initWithJavaMathBigInteger:(JavaMathBigInteger *)x
                     withJavaMathBigInteger:(JavaMathBigInteger *)p
                     withJavaMathBigInteger:(JavaMathBigInteger *)g;
 
-- (JavaMathBigInteger *)getX;
+- (JavaMathBigInteger *)getG;
 
 - (JavaMathBigInteger *)getP;
 
-- (JavaMathBigInteger *)getG;
-
-- (void)copyAllFieldsTo:(JavaxCryptoSpecDHPrivateKeySpec *)other;
+- (JavaMathBigInteger *)getX;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecDHPrivateKeySpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecDHPrivateKeySpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecDHPrivateKeySpec, x_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecDHPrivateKeySpec, p_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecDHPrivateKeySpec, g_, JavaMathBigInteger *)
+FOUNDATION_EXPORT void JavaxCryptoSpecDHPrivateKeySpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_(JavaxCryptoSpecDHPrivateKeySpec *self, JavaMathBigInteger *x, JavaMathBigInteger *p, JavaMathBigInteger *g);
+
+FOUNDATION_EXPORT JavaxCryptoSpecDHPrivateKeySpec *new_JavaxCryptoSpecDHPrivateKeySpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_(JavaMathBigInteger *x, JavaMathBigInteger *p, JavaMathBigInteger *g) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecDHPrivateKeySpec)
 
 #endif // _JavaxCryptoSpecDHPrivateKeySpec_H_

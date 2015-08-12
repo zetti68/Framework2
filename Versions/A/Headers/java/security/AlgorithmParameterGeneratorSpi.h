@@ -6,27 +6,34 @@
 #ifndef _JavaSecurityAlgorithmParameterGeneratorSpi_H_
 #define _JavaSecurityAlgorithmParameterGeneratorSpi_H_
 
+#include "J2ObjC_header.h"
+
 @class JavaSecurityAlgorithmParameters;
 @class JavaSecuritySecureRandom;
 @protocol JavaSecuritySpecAlgorithmParameterSpec;
 
-#import "JreEmulation.h"
+@interface JavaSecurityAlgorithmParameterGeneratorSpi : NSObject
 
-@interface JavaSecurityAlgorithmParameterGeneratorSpi : NSObject {
-}
+#pragma mark Public
 
 - (instancetype)init;
 
-- (void)engineInitWithInt:(jint)size
-withJavaSecuritySecureRandom:(JavaSecuritySecureRandom *)random;
+#pragma mark Protected
+
+- (JavaSecurityAlgorithmParameters *)engineGenerateParameters;
 
 - (void)engineInitWithJavaSecuritySpecAlgorithmParameterSpec:(id<JavaSecuritySpecAlgorithmParameterSpec>)genParamSpec
                                 withJavaSecuritySecureRandom:(JavaSecuritySecureRandom *)random;
 
-- (JavaSecurityAlgorithmParameters *)engineGenerateParameters;
+- (void)engineInitWithInt:(jint)size
+withJavaSecuritySecureRandom:(JavaSecuritySecureRandom *)random;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityAlgorithmParameterGeneratorSpi_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityAlgorithmParameterGeneratorSpi)
+
+FOUNDATION_EXPORT void JavaSecurityAlgorithmParameterGeneratorSpi_init(JavaSecurityAlgorithmParameterGeneratorSpi *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityAlgorithmParameterGeneratorSpi)
 
 #endif // _JavaSecurityAlgorithmParameterGeneratorSpi_H_

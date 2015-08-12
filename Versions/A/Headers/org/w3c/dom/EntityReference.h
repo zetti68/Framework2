@@ -6,12 +6,15 @@
 #ifndef _OrgW3cDomEntityReference_H_
 #define _OrgW3cDomEntityReference_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/Node.h"
 
 @protocol OrgW3cDomEntityReference < OrgW3cDomNode, NSObject, JavaObject >
+
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomEntityReference_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomEntityReference)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomEntityReference)
 
 #endif // _OrgW3cDomEntityReference_H_

@@ -6,20 +6,14 @@
 #ifndef _JavaxCryptoSpecOAEPParameterSpec_H_
 #define _JavaxCryptoSpecOAEPParameterSpec_H_
 
-@class JavaxCryptoSpecPSource;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaxCryptoSpecOAEPParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec > {
- @public
-  NSString *mdName_;
-  NSString *mgfName_;
-  id<JavaSecuritySpecAlgorithmParameterSpec> mgfSpec_;
-  JavaxCryptoSpecPSource *pSrc_;
-}
+@class JavaxCryptoSpecPSource;
 
-- (instancetype)init;
+@interface JavaxCryptoSpecOAEPParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec >
+
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)mdName
                     withNSString:(NSString *)mgfName
@@ -34,19 +28,17 @@ withJavaSecuritySpecAlgorithmParameterSpec:(id<JavaSecuritySpecAlgorithmParamete
 
 - (JavaxCryptoSpecPSource *)getPSource;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecOAEPParameterSpec *)other;
-
 @end
 
-FOUNDATION_EXPORT BOOL JavaxCryptoSpecOAEPParameterSpec_initialized;
 J2OBJC_STATIC_INIT(JavaxCryptoSpecOAEPParameterSpec)
-
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecOAEPParameterSpec, mdName_, NSString *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecOAEPParameterSpec, mgfName_, NSString *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecOAEPParameterSpec, mgfSpec_, id<JavaSecuritySpecAlgorithmParameterSpec>)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecOAEPParameterSpec, pSrc_, JavaxCryptoSpecPSource *)
 
 FOUNDATION_EXPORT JavaxCryptoSpecOAEPParameterSpec *JavaxCryptoSpecOAEPParameterSpec_DEFAULT_;
 J2OBJC_STATIC_FIELD_GETTER(JavaxCryptoSpecOAEPParameterSpec, DEFAULT_, JavaxCryptoSpecOAEPParameterSpec *)
+
+FOUNDATION_EXPORT void JavaxCryptoSpecOAEPParameterSpec_initWithNSString_withNSString_withJavaSecuritySpecAlgorithmParameterSpec_withJavaxCryptoSpecPSource_(JavaxCryptoSpecOAEPParameterSpec *self, NSString *mdName, NSString *mgfName, id<JavaSecuritySpecAlgorithmParameterSpec> mgfSpec, JavaxCryptoSpecPSource *pSrc);
+
+FOUNDATION_EXPORT JavaxCryptoSpecOAEPParameterSpec *new_JavaxCryptoSpecOAEPParameterSpec_initWithNSString_withNSString_withJavaSecuritySpecAlgorithmParameterSpec_withJavaxCryptoSpecPSource_(NSString *mdName, NSString *mgfName, id<JavaSecuritySpecAlgorithmParameterSpec> mgfSpec, JavaxCryptoSpecPSource *pSrc) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecOAEPParameterSpec)
 
 #endif // _JavaxCryptoSpecOAEPParameterSpec_H_

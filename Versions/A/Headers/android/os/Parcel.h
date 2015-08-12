@@ -6,16 +6,18 @@
 #ifndef _AndroidOsParcel_H_
 #define _AndroidOsParcel_H_
 
+#include "J2ObjC_header.h"
+
 @class IOSBooleanArray;
 @class IOSCharArray;
 @class IOSDoubleArray;
+@class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
 @class JavaLangBoolean;
 @class JavaLangClassLoader;
 @protocol AndroidOsParcelable;
-
-#import "JreEmulation.h"
+@protocol JavaUtilMap;
 
 @protocol AndroidOsParcel < NSObject, JavaObject >
 
@@ -24,6 +26,19 @@
 - (void)readCharArrayWithCharArray:(IOSCharArray *)pNewArray;
 
 - (jdouble)readDouble;
+
+- (jfloat)readFloat;
+
+- (void)writeFloatWithFloat:(jfloat)pValue;
+
+- (void)writeFloatArrayWithFloatArray:(IOSFloatArray *)pValue;
+
+- (void)readFloatArrayWithFloatArray:(IOSFloatArray *)pValue;
+
+- (void)readMapWithJavaUtilMap:(id<JavaUtilMap>)pMap
+       withJavaLangClassLoader:(JavaLangClassLoader *)pClassloader;
+
+- (void)writeMapWithJavaUtilMap:(id<JavaUtilMap>)pMap;
 
 - (void)readDoubleArrayWithDoubleArray:(IOSDoubleArray *)pNewArray;
 
@@ -67,6 +82,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidOsParcel_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidOsParcel)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidOsParcel)
 
 #endif // _AndroidOsParcel_H_

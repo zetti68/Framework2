@@ -6,9 +6,9 @@
 #ifndef _OrgW3cDomNamedNodeMap_H_
 #define _OrgW3cDomNamedNodeMap_H_
 
-@protocol OrgW3cDomNode;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol OrgW3cDomNode;
 
 @protocol OrgW3cDomNamedNodeMap < NSObject, JavaObject >
 
@@ -32,6 +32,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomNamedNodeMap_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomNamedNodeMap)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomNamedNodeMap)
 
 #endif // _OrgW3cDomNamedNodeMap_H_

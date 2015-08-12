@@ -6,6 +6,9 @@
 #ifndef _OrgW3cDomDocument_H_
 #define _OrgW3cDomDocument_H_
 
+#include "J2ObjC_header.h"
+#include "org/w3c/dom/Node.h"
+
 @protocol OrgW3cDomAttr;
 @protocol OrgW3cDomCDATASection;
 @protocol OrgW3cDomComment;
@@ -19,10 +22,8 @@
 @protocol OrgW3cDomProcessingInstruction;
 @protocol OrgW3cDomText;
 
-#import "JreEmulation.h"
-#include "org/w3c/dom/Node.h"
-
 @protocol OrgW3cDomDocument < OrgW3cDomNode, NSObject, JavaObject >
+
 - (id<OrgW3cDomDocumentType>)getDoctype;
 
 - (id<OrgW3cDomDOMImplementation>)getImplementation;
@@ -94,6 +95,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDocument_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDocument)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDocument)
 
 #endif // _OrgW3cDomDocument_H_

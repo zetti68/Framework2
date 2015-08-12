@@ -6,30 +6,32 @@
 #ifndef _AndroidGraphicsPaint_H_
 #define _AndroidGraphicsPaint_H_
 
-@class AndroidGraphicsPaint_AlignEnum;
-@class AndroidGraphicsPaint_StyleEnum;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Enum.h"
 
-@interface AndroidGraphicsPaint : NSObject {
-}
+@class AndroidGraphicsPaint_AlignEnum;
+@class AndroidGraphicsPaint_StyleEnum;
+@class IOSObjectArray;
 
-- (jfloat)getTextSize;
+@interface AndroidGraphicsPaint : NSObject
 
-- (void)setTextSizeWithFloat:(jfloat)pFontSize;
+#pragma mark Public
 
-- (void)setColorWithInt:(jint)pColor;
-
-- (void)setAntiAliasWithBoolean:(jboolean)pB;
+- (instancetype)init;
 
 - (jfloat)ascent;
 
 - (jfloat)descent;
 
+- (AndroidGraphicsPaint_StyleEnum *)getStyle;
+
+- (jfloat)getTextSize;
+
 - (jfloat)measureTextWithNSString:(NSString *)pText;
 
-- (AndroidGraphicsPaint_StyleEnum *)getStyle;
+- (void)setAntiAliasWithBoolean:(jboolean)pB;
+
+- (void)setColorWithInt:(jint)pColor;
 
 - (void)setColorFilterWithId:(id)pObject;
 
@@ -39,86 +41,174 @@
 
 - (void)setTextAlignWithAndroidGraphicsPaint_AlignEnum:(AndroidGraphicsPaint_AlignEnum *)pLeft;
 
-- (instancetype)init;
+- (void)setTextSizeWithFloat:(jfloat)pFontSize;
 
 @end
 
-__attribute__((always_inline)) inline void AndroidGraphicsPaint_init() {}
+J2OBJC_STATIC_INIT(AndroidGraphicsPaint)
 
-typedef enum {
+FOUNDATION_EXPORT IOSObjectArray *AndroidGraphicsPaint_sCapArray_;
+J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint, sCapArray_, IOSObjectArray *)
+
+FOUNDATION_EXPORT IOSObjectArray *AndroidGraphicsPaint_sJoinArray_;
+J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint, sJoinArray_, IOSObjectArray *)
+
+FOUNDATION_EXPORT void AndroidGraphicsPaint_init(AndroidGraphicsPaint *self);
+
+FOUNDATION_EXPORT AndroidGraphicsPaint *new_AndroidGraphicsPaint_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsPaint)
+
+typedef NS_ENUM(NSUInteger, AndroidGraphicsPaint_Align) {
   AndroidGraphicsPaint_Align_LEFT = 0,
   AndroidGraphicsPaint_Align_CENTER = 1,
   AndroidGraphicsPaint_Align_RIGHT = 2,
-} AndroidGraphicsPaint_Align;
+};
 
 @interface AndroidGraphicsPaint_AlignEnum : JavaLangEnum < NSCopying > {
  @public
   jint nativeInt_;
 }
 
-- (instancetype)initWithInt:(jint)nativeInt
-               withNSString:(NSString *)__name
-                    withInt:(jint)__ordinal;
+#pragma mark Package-Private
 
 + (IOSObjectArray *)values;
 FOUNDATION_EXPORT IOSObjectArray *AndroidGraphicsPaint_AlignEnum_values();
 
 + (AndroidGraphicsPaint_AlignEnum *)valueOfWithNSString:(NSString *)name;
+FOUNDATION_EXPORT AndroidGraphicsPaint_AlignEnum *AndroidGraphicsPaint_AlignEnum_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT AndroidGraphicsPaint_AlignEnum *AndroidGraphicsPaint_AlignEnum_valueOfWithNSString_(NSString *name);- (id)copyWithZone:(NSZone *)zone;
+- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
-FOUNDATION_EXPORT BOOL AndroidGraphicsPaint_AlignEnum_initialized;
 J2OBJC_STATIC_INIT(AndroidGraphicsPaint_AlignEnum)
 
 FOUNDATION_EXPORT AndroidGraphicsPaint_AlignEnum *AndroidGraphicsPaint_AlignEnum_values_[];
 
 #define AndroidGraphicsPaint_AlignEnum_LEFT AndroidGraphicsPaint_AlignEnum_values_[AndroidGraphicsPaint_Align_LEFT]
-J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint_AlignEnum, LEFT, AndroidGraphicsPaint_AlignEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_AlignEnum, LEFT)
 
 #define AndroidGraphicsPaint_AlignEnum_CENTER AndroidGraphicsPaint_AlignEnum_values_[AndroidGraphicsPaint_Align_CENTER]
-J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint_AlignEnum, CENTER, AndroidGraphicsPaint_AlignEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_AlignEnum, CENTER)
 
 #define AndroidGraphicsPaint_AlignEnum_RIGHT AndroidGraphicsPaint_AlignEnum_values_[AndroidGraphicsPaint_Align_RIGHT]
-J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint_AlignEnum, RIGHT, AndroidGraphicsPaint_AlignEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_AlignEnum, RIGHT)
 
-typedef enum {
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsPaint_AlignEnum)
+
+typedef NS_ENUM(NSUInteger, AndroidGraphicsPaint_Style) {
   AndroidGraphicsPaint_Style_FILL = 0,
   AndroidGraphicsPaint_Style_STROKE = 1,
   AndroidGraphicsPaint_Style_FILL_AND_STROKE = 2,
-} AndroidGraphicsPaint_Style;
+};
 
 @interface AndroidGraphicsPaint_StyleEnum : JavaLangEnum < NSCopying > {
  @public
   jint nativeInt_;
 }
 
-- (instancetype)initWithInt:(jint)nativeInt
-               withNSString:(NSString *)__name
-                    withInt:(jint)__ordinal;
+#pragma mark Package-Private
 
 + (IOSObjectArray *)values;
 FOUNDATION_EXPORT IOSObjectArray *AndroidGraphicsPaint_StyleEnum_values();
 
 + (AndroidGraphicsPaint_StyleEnum *)valueOfWithNSString:(NSString *)name;
+FOUNDATION_EXPORT AndroidGraphicsPaint_StyleEnum *AndroidGraphicsPaint_StyleEnum_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT AndroidGraphicsPaint_StyleEnum *AndroidGraphicsPaint_StyleEnum_valueOfWithNSString_(NSString *name);- (id)copyWithZone:(NSZone *)zone;
+- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
-FOUNDATION_EXPORT BOOL AndroidGraphicsPaint_StyleEnum_initialized;
 J2OBJC_STATIC_INIT(AndroidGraphicsPaint_StyleEnum)
 
 FOUNDATION_EXPORT AndroidGraphicsPaint_StyleEnum *AndroidGraphicsPaint_StyleEnum_values_[];
 
 #define AndroidGraphicsPaint_StyleEnum_FILL AndroidGraphicsPaint_StyleEnum_values_[AndroidGraphicsPaint_Style_FILL]
-J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint_StyleEnum, FILL, AndroidGraphicsPaint_StyleEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_StyleEnum, FILL)
 
 #define AndroidGraphicsPaint_StyleEnum_STROKE AndroidGraphicsPaint_StyleEnum_values_[AndroidGraphicsPaint_Style_STROKE]
-J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint_StyleEnum, STROKE, AndroidGraphicsPaint_StyleEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_StyleEnum, STROKE)
 
 #define AndroidGraphicsPaint_StyleEnum_FILL_AND_STROKE AndroidGraphicsPaint_StyleEnum_values_[AndroidGraphicsPaint_Style_FILL_AND_STROKE]
-J2OBJC_STATIC_FIELD_GETTER(AndroidGraphicsPaint_StyleEnum, FILL_AND_STROKE, AndroidGraphicsPaint_StyleEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_StyleEnum, FILL_AND_STROKE)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsPaint_StyleEnum)
+
+typedef NS_ENUM(NSUInteger, AndroidGraphicsPaint_Cap) {
+  AndroidGraphicsPaint_Cap_BUTT = 0,
+  AndroidGraphicsPaint_Cap_ROUND = 1,
+  AndroidGraphicsPaint_Cap_SQUARE = 2,
+};
+
+@interface AndroidGraphicsPaint_CapEnum : JavaLangEnum < NSCopying > {
+ @public
+  jint nativeInt_;
+}
+
+#pragma mark Package-Private
+
++ (IOSObjectArray *)values;
+FOUNDATION_EXPORT IOSObjectArray *AndroidGraphicsPaint_CapEnum_values();
+
++ (AndroidGraphicsPaint_CapEnum *)valueOfWithNSString:(NSString *)name;
+FOUNDATION_EXPORT AndroidGraphicsPaint_CapEnum *AndroidGraphicsPaint_CapEnum_valueOfWithNSString_(NSString *name);
+
+- (id)copyWithZone:(NSZone *)zone;
+
+@end
+
+J2OBJC_STATIC_INIT(AndroidGraphicsPaint_CapEnum)
+
+FOUNDATION_EXPORT AndroidGraphicsPaint_CapEnum *AndroidGraphicsPaint_CapEnum_values_[];
+
+#define AndroidGraphicsPaint_CapEnum_BUTT AndroidGraphicsPaint_CapEnum_values_[AndroidGraphicsPaint_Cap_BUTT]
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_CapEnum, BUTT)
+
+#define AndroidGraphicsPaint_CapEnum_ROUND AndroidGraphicsPaint_CapEnum_values_[AndroidGraphicsPaint_Cap_ROUND]
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_CapEnum, ROUND)
+
+#define AndroidGraphicsPaint_CapEnum_SQUARE AndroidGraphicsPaint_CapEnum_values_[AndroidGraphicsPaint_Cap_SQUARE]
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_CapEnum, SQUARE)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsPaint_CapEnum)
+
+typedef NS_ENUM(NSUInteger, AndroidGraphicsPaint_Join) {
+  AndroidGraphicsPaint_Join_MITER = 0,
+  AndroidGraphicsPaint_Join_ROUND = 1,
+  AndroidGraphicsPaint_Join_BEVEL = 2,
+};
+
+@interface AndroidGraphicsPaint_JoinEnum : JavaLangEnum < NSCopying > {
+ @public
+  jint nativeInt_;
+}
+
+#pragma mark Package-Private
+
++ (IOSObjectArray *)values;
+FOUNDATION_EXPORT IOSObjectArray *AndroidGraphicsPaint_JoinEnum_values();
+
++ (AndroidGraphicsPaint_JoinEnum *)valueOfWithNSString:(NSString *)name;
+FOUNDATION_EXPORT AndroidGraphicsPaint_JoinEnum *AndroidGraphicsPaint_JoinEnum_valueOfWithNSString_(NSString *name);
+
+- (id)copyWithZone:(NSZone *)zone;
+
+@end
+
+J2OBJC_STATIC_INIT(AndroidGraphicsPaint_JoinEnum)
+
+FOUNDATION_EXPORT AndroidGraphicsPaint_JoinEnum *AndroidGraphicsPaint_JoinEnum_values_[];
+
+#define AndroidGraphicsPaint_JoinEnum_MITER AndroidGraphicsPaint_JoinEnum_values_[AndroidGraphicsPaint_Join_MITER]
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_JoinEnum, MITER)
+
+#define AndroidGraphicsPaint_JoinEnum_ROUND AndroidGraphicsPaint_JoinEnum_values_[AndroidGraphicsPaint_Join_ROUND]
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_JoinEnum, ROUND)
+
+#define AndroidGraphicsPaint_JoinEnum_BEVEL AndroidGraphicsPaint_JoinEnum_values_[AndroidGraphicsPaint_Join_BEVEL]
+J2OBJC_ENUM_CONSTANT_GETTER(AndroidGraphicsPaint_JoinEnum, BEVEL)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsPaint_JoinEnum)
 
 #endif // _AndroidGraphicsPaint_H_

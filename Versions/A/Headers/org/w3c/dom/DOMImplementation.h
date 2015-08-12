@@ -6,10 +6,10 @@
 #ifndef _OrgW3cDomDOMImplementation_H_
 #define _OrgW3cDomDOMImplementation_H_
 
+#include "J2ObjC_header.h"
+
 @protocol OrgW3cDomDocument;
 @protocol OrgW3cDomDocumentType;
-
-#import "JreEmulation.h"
 
 @protocol OrgW3cDomDOMImplementation < NSObject, JavaObject >
 
@@ -29,6 +29,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDOMImplementation_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDOMImplementation)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDOMImplementation)
 
 #endif // _OrgW3cDomDOMImplementation_H_

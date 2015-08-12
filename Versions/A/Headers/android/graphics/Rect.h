@@ -6,7 +6,7 @@
 #ifndef _AndroidGraphicsRect_H_
 #define _AndroidGraphicsRect_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 @interface AndroidGraphicsRect : NSObject {
  @public
@@ -16,19 +16,25 @@
   jint bottom_;
 }
 
-- (jboolean)containsWithInt:(jint)pX
-                    withInt:(jint)pY;
-
-- (jint)width;
-
-- (jint)height;
+#pragma mark Public
 
 - (instancetype)init;
 
-- (void)copyAllFieldsTo:(AndroidGraphicsRect *)other;
+- (jboolean)containsWithInt:(jint)pX
+                    withInt:(jint)pY;
+
+- (jint)height;
+
+- (jint)width;
 
 @end
 
-__attribute__((always_inline)) inline void AndroidGraphicsRect_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidGraphicsRect)
+
+FOUNDATION_EXPORT void AndroidGraphicsRect_init(AndroidGraphicsRect *self);
+
+FOUNDATION_EXPORT AndroidGraphicsRect *new_AndroidGraphicsRect_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsRect)
 
 #endif // _AndroidGraphicsRect_H_

@@ -6,14 +6,25 @@
 #ifndef _JavaSecurityAlgorithmParametersSpi_H_
 #define _JavaSecurityAlgorithmParametersSpi_H_
 
+#include "J2ObjC_header.h"
+
 @class IOSByteArray;
 @class IOSClass;
 @protocol JavaSecuritySpecAlgorithmParameterSpec;
 
-#import "JreEmulation.h"
+@interface JavaSecurityAlgorithmParametersSpi : NSObject
 
-@interface JavaSecurityAlgorithmParametersSpi : NSObject {
-}
+#pragma mark Public
+
+- (instancetype)init;
+
+#pragma mark Protected
+
+- (IOSByteArray *)engineGetEncoded;
+
+- (IOSByteArray *)engineGetEncodedWithNSString:(NSString *)format;
+
+- (id)engineGetParameterSpecWithIOSClass:(IOSClass *)paramSpec;
 
 - (void)engineInitWithJavaSecuritySpecAlgorithmParameterSpec:(id<JavaSecuritySpecAlgorithmParameterSpec>)paramSpec;
 
@@ -22,18 +33,14 @@
 - (void)engineInitWithByteArray:(IOSByteArray *)params
                    withNSString:(NSString *)format;
 
-- (id)engineGetParameterSpecWithIOSClass:(IOSClass *)paramSpec;
-
-- (IOSByteArray *)engineGetEncoded;
-
-- (IOSByteArray *)engineGetEncodedWithNSString:(NSString *)format;
-
 - (NSString *)engineToString;
-
-- (instancetype)init;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityAlgorithmParametersSpi_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityAlgorithmParametersSpi)
+
+FOUNDATION_EXPORT void JavaSecurityAlgorithmParametersSpi_init(JavaSecurityAlgorithmParametersSpi *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityAlgorithmParametersSpi)
 
 #endif // _JavaSecurityAlgorithmParametersSpi_H_

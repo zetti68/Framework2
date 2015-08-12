@@ -6,6 +6,8 @@
 #ifndef _AndroidContentContext_H_
 #define _AndroidContentContext_H_
 
+#include "J2ObjC_header.h"
+
 @class IOSIntArray;
 @class JavaIoFile;
 @protocol AndroidContentResAssetManager;
@@ -13,8 +15,6 @@
 @protocol AndroidContentResResources_Theme;
 @protocol AndroidContentResTypedArray;
 @protocol AndroidUtilAttributeSet;
-
-#import "JreEmulation.h"
 
 #define AndroidContentContext_MODE_PRIVATE 0
 
@@ -43,7 +43,7 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidContentContext_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidContentContext)
 
 FOUNDATION_EXPORT NSString *AndroidContentContext_INPUT_METHOD_SERVICE_;
 J2OBJC_STATIC_FIELD_GETTER(AndroidContentContext, INPUT_METHOD_SERVICE_, NSString *)
@@ -52,5 +52,7 @@ J2OBJC_STATIC_FIELD_GETTER(AndroidContentContext, MODE_PRIVATE, jint)
 
 FOUNDATION_EXPORT NSString *AndroidContentContext_TELEPHONY_SERVICE_;
 J2OBJC_STATIC_FIELD_GETTER(AndroidContentContext, TELEPHONY_SERVICE_, NSString *)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidContentContext)
 
 #endif // _AndroidContentContext_H_

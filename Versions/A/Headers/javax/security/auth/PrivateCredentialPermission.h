@@ -6,31 +6,38 @@
 #ifndef _JavaxSecurityAuthPrivateCredentialPermission_H_
 #define _JavaxSecurityAuthPrivateCredentialPermission_H_
 
-@class IOSObjectArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/Permission.h"
 
-@interface JavaxSecurityAuthPrivateCredentialPermission : JavaSecurityPermission {
-}
+@class IOSObjectArray;
+
+@interface JavaxSecurityAuthPrivateCredentialPermission : JavaSecurityPermission
+
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)name
                     withNSString:(NSString *)action;
 
-- (IOSObjectArray *)getPrincipals;
-
-- (NSString *)getCredentialClass;
+- (jboolean)isEqual:(id)pObj;
 
 - (NSString *)getActions;
 
-- (jboolean)impliesWithJavaSecurityPermission:(JavaSecurityPermission *)permission;
+- (NSString *)getCredentialClass;
 
-- (jboolean)isEqual:(id)pObj;
+- (IOSObjectArray *)getPrincipals;
 
 - (NSUInteger)hash;
 
+- (jboolean)impliesWithJavaSecurityPermission:(JavaSecurityPermission *)permission;
+
 @end
 
-__attribute__((always_inline)) inline void JavaxSecurityAuthPrivateCredentialPermission_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxSecurityAuthPrivateCredentialPermission)
+
+FOUNDATION_EXPORT void JavaxSecurityAuthPrivateCredentialPermission_initWithNSString_withNSString_(JavaxSecurityAuthPrivateCredentialPermission *self, NSString *name, NSString *action);
+
+FOUNDATION_EXPORT JavaxSecurityAuthPrivateCredentialPermission *new_JavaxSecurityAuthPrivateCredentialPermission_initWithNSString_withNSString_(NSString *name, NSString *action) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxSecurityAuthPrivateCredentialPermission)
 
 #endif // _JavaxSecurityAuthPrivateCredentialPermission_H_

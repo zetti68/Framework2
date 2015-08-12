@@ -6,48 +6,53 @@
 #ifndef _JavaxCryptoSpecPBEKeySpec_H_
 #define _JavaxCryptoSpecPBEKeySpec_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/spec/KeySpec.h"
+
 @class IOSByteArray;
 @class IOSCharArray;
 
-#import "JreEmulation.h"
-#include "java/security/spec/KeySpec.h"
+@interface JavaxCryptoSpecPBEKeySpec : NSObject < JavaSecuritySpecKeySpec >
 
-@interface JavaxCryptoSpecPBEKeySpec : NSObject < JavaSecuritySpecKeySpec > {
- @public
-  IOSCharArray *password_;
-  IOSByteArray *salt_;
-  jint iterationCount_;
-  jint keyLength_;
-}
+#pragma mark Public
 
 - (instancetype)initWithCharArray:(IOSCharArray *)password;
+
+- (instancetype)initWithCharArray:(IOSCharArray *)password
+                    withByteArray:(IOSByteArray *)salt
+                          withInt:(jint)iterationCount;
 
 - (instancetype)initWithCharArray:(IOSCharArray *)password
                     withByteArray:(IOSByteArray *)salt
                           withInt:(jint)iterationCount
                           withInt:(jint)keyLength;
 
-- (instancetype)initWithCharArray:(IOSCharArray *)password
-                    withByteArray:(IOSByteArray *)salt
-                          withInt:(jint)iterationCount;
-
 - (void)clearPassword;
-
-- (IOSCharArray *)getPassword;
-
-- (IOSByteArray *)getSalt;
 
 - (jint)getIterationCount;
 
 - (jint)getKeyLength;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecPBEKeySpec *)other;
+- (IOSCharArray *)getPassword;
+
+- (IOSByteArray *)getSalt;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecPBEKeySpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecPBEKeySpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecPBEKeySpec, password_, IOSCharArray *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecPBEKeySpec, salt_, IOSByteArray *)
+FOUNDATION_EXPORT void JavaxCryptoSpecPBEKeySpec_initWithCharArray_(JavaxCryptoSpecPBEKeySpec *self, IOSCharArray *password);
+
+FOUNDATION_EXPORT JavaxCryptoSpecPBEKeySpec *new_JavaxCryptoSpecPBEKeySpec_initWithCharArray_(IOSCharArray *password) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecPBEKeySpec_initWithCharArray_withByteArray_withInt_withInt_(JavaxCryptoSpecPBEKeySpec *self, IOSCharArray *password, IOSByteArray *salt, jint iterationCount, jint keyLength);
+
+FOUNDATION_EXPORT JavaxCryptoSpecPBEKeySpec *new_JavaxCryptoSpecPBEKeySpec_initWithCharArray_withByteArray_withInt_withInt_(IOSCharArray *password, IOSByteArray *salt, jint iterationCount, jint keyLength) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecPBEKeySpec_initWithCharArray_withByteArray_withInt_(JavaxCryptoSpecPBEKeySpec *self, IOSCharArray *password, IOSByteArray *salt, jint iterationCount);
+
+FOUNDATION_EXPORT JavaxCryptoSpecPBEKeySpec *new_JavaxCryptoSpecPBEKeySpec_initWithCharArray_withByteArray_withInt_(IOSCharArray *password, IOSByteArray *salt, jint iterationCount) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecPBEKeySpec)
 
 #endif // _JavaxCryptoSpecPBEKeySpec_H_

@@ -6,10 +6,13 @@
 #ifndef _AndroidGraphicsPath_H_
 #define _AndroidGraphicsPath_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
-@interface AndroidGraphicsPath : NSObject {
-}
+@interface AndroidGraphicsPath : NSObject
+
+#pragma mark Public
+
+- (instancetype)init;
 
 - (void)lineToWithFloat:(jfloat)pX
               withFloat:(jfloat)pY;
@@ -17,10 +20,14 @@
 - (void)moveToWithFloat:(jfloat)pX
               withFloat:(jfloat)pY;
 
-- (instancetype)init;
-
 @end
 
-__attribute__((always_inline)) inline void AndroidGraphicsPath_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidGraphicsPath)
+
+FOUNDATION_EXPORT void AndroidGraphicsPath_init(AndroidGraphicsPath *self);
+
+FOUNDATION_EXPORT AndroidGraphicsPath *new_AndroidGraphicsPath_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidGraphicsPath)
 
 #endif // _AndroidGraphicsPath_H_

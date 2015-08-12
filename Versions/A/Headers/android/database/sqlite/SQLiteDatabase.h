@@ -6,30 +6,37 @@
 #ifndef _AndroidDatabaseSqliteSQLiteDatabase_H_
 #define _AndroidDatabaseSqliteSQLiteDatabase_H_
 
-@protocol AndroidDatabaseCursor;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol AndroidDatabaseCursor;
 
 #define AndroidDatabaseSqliteSQLiteDatabase_OPEN_READONLY 1
 
-@interface AndroidDatabaseSqliteSQLiteDatabase : NSObject {
-}
+@interface AndroidDatabaseSqliteSQLiteDatabase : NSObject
+
+#pragma mark Public
+
+- (instancetype)init;
 
 - (void)close;
-
-- (id<AndroidDatabaseCursor>)rawQueryWithNSString:(NSString *)pSqlCom
-                                           withId:(id)pObject;
 
 + (AndroidDatabaseSqliteSQLiteDatabase *)openDatabaseWithNSString:(NSString *)path
                                                            withId:(id)factory
                                                           withInt:(jint)flags;
 
-- (instancetype)init;
+- (id<AndroidDatabaseCursor>)rawQueryWithNSString:(NSString *)pSqlCom
+                                           withId:(id)pObject;
 
 @end
 
-__attribute__((always_inline)) inline void AndroidDatabaseSqliteSQLiteDatabase_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidDatabaseSqliteSQLiteDatabase)
 
 J2OBJC_STATIC_FIELD_GETTER(AndroidDatabaseSqliteSQLiteDatabase, OPEN_READONLY, jint)
+
+FOUNDATION_EXPORT AndroidDatabaseSqliteSQLiteDatabase *AndroidDatabaseSqliteSQLiteDatabase_openDatabaseWithNSString_withId_withInt_(NSString *path, id factory, jint flags);
+
+FOUNDATION_EXPORT void AndroidDatabaseSqliteSQLiteDatabase_init(AndroidDatabaseSqliteSQLiteDatabase *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidDatabaseSqliteSQLiteDatabase)
 
 #endif // _AndroidDatabaseSqliteSQLiteDatabase_H_

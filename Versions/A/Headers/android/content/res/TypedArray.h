@@ -6,7 +6,7 @@
 #ifndef _AndroidContentResTypedArray_H_
 #define _AndroidContentResTypedArray_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 @protocol AndroidContentResTypedArray < NSObject, JavaObject >
 
@@ -29,6 +29,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidContentResTypedArray_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidContentResTypedArray)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidContentResTypedArray)
 
 #endif // _AndroidContentResTypedArray_H_

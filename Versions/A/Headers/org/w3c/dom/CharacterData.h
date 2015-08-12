@@ -6,10 +6,11 @@
 #ifndef _OrgW3cDomCharacterData_H_
 #define _OrgW3cDomCharacterData_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/Node.h"
 
 @protocol OrgW3cDomCharacterData < OrgW3cDomNode, NSObject, JavaObject >
+
 - (NSString *)getData;
 
 - (void)setDataWithNSString:(NSString *)data;
@@ -33,6 +34,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomCharacterData_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomCharacterData)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomCharacterData)
 
 #endif // _OrgW3cDomCharacterData_H_

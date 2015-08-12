@@ -6,12 +6,15 @@
 #ifndef _OrgW3cDomComment_H_
 #define _OrgW3cDomComment_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/CharacterData.h"
 
 @protocol OrgW3cDomComment < OrgW3cDomCharacterData, NSObject, JavaObject >
+
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomComment_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomComment)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomComment)
 
 #endif // _OrgW3cDomComment_H_

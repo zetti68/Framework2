@@ -6,18 +6,15 @@
 #ifndef _JavaSecuritySpecDSAParameterSpec_H_
 #define _JavaSecuritySpecDSAParameterSpec_H_
 
-@class JavaMathBigInteger;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/interfaces/DSAParams.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaSecuritySpecDSAParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec, JavaSecurityInterfacesDSAParams > {
- @public
-  JavaMathBigInteger *p_;
-  JavaMathBigInteger *q_;
-  JavaMathBigInteger *g_;
-}
+@class JavaMathBigInteger;
+
+@interface JavaSecuritySpecDSAParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec, JavaSecurityInterfacesDSAParams >
+
+#pragma mark Public
 
 - (instancetype)initWithJavaMathBigInteger:(JavaMathBigInteger *)p
                     withJavaMathBigInteger:(JavaMathBigInteger *)q
@@ -29,14 +26,14 @@
 
 - (JavaMathBigInteger *)getQ;
 
-- (void)copyAllFieldsTo:(JavaSecuritySpecDSAParameterSpec *)other;
-
 @end
 
-__attribute__((always_inline)) inline void JavaSecuritySpecDSAParameterSpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecuritySpecDSAParameterSpec)
 
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAParameterSpec, p_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAParameterSpec, q_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAParameterSpec, g_, JavaMathBigInteger *)
+FOUNDATION_EXPORT void JavaSecuritySpecDSAParameterSpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_(JavaSecuritySpecDSAParameterSpec *self, JavaMathBigInteger *p, JavaMathBigInteger *q, JavaMathBigInteger *g);
+
+FOUNDATION_EXPORT JavaSecuritySpecDSAParameterSpec *new_JavaSecuritySpecDSAParameterSpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_(JavaMathBigInteger *p, JavaMathBigInteger *q, JavaMathBigInteger *g) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecuritySpecDSAParameterSpec)
 
 #endif // _JavaSecuritySpecDSAParameterSpec_H_

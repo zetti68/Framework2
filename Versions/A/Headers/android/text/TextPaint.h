@@ -6,16 +6,23 @@
 #ifndef _AndroidTextTextPaint_H_
 #define _AndroidTextTextPaint_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "android/graphics/Paint.h"
 
-@interface AndroidTextTextPaint : AndroidGraphicsPaint {
-}
+@interface AndroidTextTextPaint : AndroidGraphicsPaint
+
+#pragma mark Public
 
 - (instancetype)init;
 
 @end
 
-__attribute__((always_inline)) inline void AndroidTextTextPaint_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidTextTextPaint)
+
+FOUNDATION_EXPORT void AndroidTextTextPaint_init(AndroidTextTextPaint *self);
+
+FOUNDATION_EXPORT AndroidTextTextPaint *new_AndroidTextTextPaint_init() NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidTextTextPaint)
 
 #endif // _AndroidTextTextPaint_H_

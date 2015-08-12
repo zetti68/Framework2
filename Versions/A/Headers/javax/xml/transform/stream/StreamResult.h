@@ -6,55 +6,68 @@
 #ifndef _JavaxXmlTransformStreamStreamResult_H_
 #define _JavaxXmlTransformStreamStreamResult_H_
 
+#include "J2ObjC_header.h"
+#include "javax/xml/transform/Result.h"
+
 @class JavaIoFile;
 @class JavaIoOutputStream;
 @class JavaIoWriter;
 
-#import "JreEmulation.h"
-#include "javax/xml/transform/Result.h"
+@interface JavaxXmlTransformStreamStreamResult : NSObject < JavaxXmlTransformResult >
 
-@interface JavaxXmlTransformStreamStreamResult : NSObject < JavaxXmlTransformResult > {
- @public
-  NSString *systemId_;
-  JavaIoOutputStream *outputStream_;
-  JavaIoWriter *writer_;
-}
+#pragma mark Public
 
 - (instancetype)init;
 
-- (instancetype)initWithJavaIoOutputStream:(JavaIoOutputStream *)outputStream;
+- (instancetype)initWithJavaIoFile:(JavaIoFile *)f;
 
-- (instancetype)initWithJavaIoWriter:(JavaIoWriter *)writer;
+- (instancetype)initWithJavaIoOutputStream:(JavaIoOutputStream *)outputStream;
 
 - (instancetype)initWithNSString:(NSString *)systemId;
 
-- (instancetype)initWithJavaIoFile:(JavaIoFile *)f;
-
-- (void)setOutputStreamWithJavaIoOutputStream:(JavaIoOutputStream *)outputStream;
+- (instancetype)initWithJavaIoWriter:(JavaIoWriter *)writer;
 
 - (JavaIoOutputStream *)getOutputStream;
 
-- (void)setWriterWithJavaIoWriter:(JavaIoWriter *)writer;
+- (NSString *)getSystemId;
 
 - (JavaIoWriter *)getWriter;
 
-- (void)setSystemIdWithNSString:(NSString *)systemId;
+- (void)setOutputStreamWithJavaIoOutputStream:(JavaIoOutputStream *)outputStream;
 
 - (void)setSystemIdWithJavaIoFile:(JavaIoFile *)f;
 
-- (NSString *)getSystemId;
+- (void)setSystemIdWithNSString:(NSString *)systemId;
 
-- (void)copyAllFieldsTo:(JavaxXmlTransformStreamStreamResult *)other;
+- (void)setWriterWithJavaIoWriter:(JavaIoWriter *)writer;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxXmlTransformStreamStreamResult_init() {}
-
-J2OBJC_FIELD_SETTER(JavaxXmlTransformStreamStreamResult, systemId_, NSString *)
-J2OBJC_FIELD_SETTER(JavaxXmlTransformStreamStreamResult, outputStream_, JavaIoOutputStream *)
-J2OBJC_FIELD_SETTER(JavaxXmlTransformStreamStreamResult, writer_, JavaIoWriter *)
+J2OBJC_EMPTY_STATIC_INIT(JavaxXmlTransformStreamStreamResult)
 
 FOUNDATION_EXPORT NSString *JavaxXmlTransformStreamStreamResult_FEATURE_;
 J2OBJC_STATIC_FIELD_GETTER(JavaxXmlTransformStreamStreamResult, FEATURE_, NSString *)
+
+FOUNDATION_EXPORT void JavaxXmlTransformStreamStreamResult_init(JavaxXmlTransformStreamStreamResult *self);
+
+FOUNDATION_EXPORT JavaxXmlTransformStreamStreamResult *new_JavaxXmlTransformStreamStreamResult_init() NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxXmlTransformStreamStreamResult_initWithJavaIoOutputStream_(JavaxXmlTransformStreamStreamResult *self, JavaIoOutputStream *outputStream);
+
+FOUNDATION_EXPORT JavaxXmlTransformStreamStreamResult *new_JavaxXmlTransformStreamStreamResult_initWithJavaIoOutputStream_(JavaIoOutputStream *outputStream) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxXmlTransformStreamStreamResult_initWithJavaIoWriter_(JavaxXmlTransformStreamStreamResult *self, JavaIoWriter *writer);
+
+FOUNDATION_EXPORT JavaxXmlTransformStreamStreamResult *new_JavaxXmlTransformStreamStreamResult_initWithJavaIoWriter_(JavaIoWriter *writer) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxXmlTransformStreamStreamResult_initWithNSString_(JavaxXmlTransformStreamStreamResult *self, NSString *systemId);
+
+FOUNDATION_EXPORT JavaxXmlTransformStreamStreamResult *new_JavaxXmlTransformStreamStreamResult_initWithNSString_(NSString *systemId) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxXmlTransformStreamStreamResult_initWithJavaIoFile_(JavaxXmlTransformStreamStreamResult *self, JavaIoFile *f);
+
+FOUNDATION_EXPORT JavaxXmlTransformStreamStreamResult *new_JavaxXmlTransformStreamStreamResult_initWithJavaIoFile_(JavaIoFile *f) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxXmlTransformStreamStreamResult)
 
 #endif // _JavaxXmlTransformStreamStreamResult_H_

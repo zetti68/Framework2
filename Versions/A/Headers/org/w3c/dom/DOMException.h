@@ -6,40 +6,40 @@
 #ifndef _OrgW3cDomDOMException_H_
 #define _OrgW3cDomDOMException_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/RuntimeException.h"
 
+#define OrgW3cDomDOMException_INDEX_SIZE_ERR 1
 #define OrgW3cDomDOMException_DOMSTRING_SIZE_ERR 2
 #define OrgW3cDomDOMException_HIERARCHY_REQUEST_ERR 3
-#define OrgW3cDomDOMException_INDEX_SIZE_ERR 1
-#define OrgW3cDomDOMException_INUSE_ATTRIBUTE_ERR 10
-#define OrgW3cDomDOMException_INVALID_ACCESS_ERR 15
+#define OrgW3cDomDOMException_WRONG_DOCUMENT_ERR 4
 #define OrgW3cDomDOMException_INVALID_CHARACTER_ERR 5
-#define OrgW3cDomDOMException_INVALID_MODIFICATION_ERR 13
-#define OrgW3cDomDOMException_INVALID_STATE_ERR 11
-#define OrgW3cDomDOMException_NAMESPACE_ERR 14
-#define OrgW3cDomDOMException_NOT_FOUND_ERR 8
-#define OrgW3cDomDOMException_NOT_SUPPORTED_ERR 9
 #define OrgW3cDomDOMException_NO_DATA_ALLOWED_ERR 6
 #define OrgW3cDomDOMException_NO_MODIFICATION_ALLOWED_ERR 7
+#define OrgW3cDomDOMException_NOT_FOUND_ERR 8
+#define OrgW3cDomDOMException_NOT_SUPPORTED_ERR 9
+#define OrgW3cDomDOMException_INUSE_ATTRIBUTE_ERR 10
+#define OrgW3cDomDOMException_INVALID_STATE_ERR 11
 #define OrgW3cDomDOMException_SYNTAX_ERR 12
-#define OrgW3cDomDOMException_TYPE_MISMATCH_ERR 17
+#define OrgW3cDomDOMException_INVALID_MODIFICATION_ERR 13
+#define OrgW3cDomDOMException_NAMESPACE_ERR 14
+#define OrgW3cDomDOMException_INVALID_ACCESS_ERR 15
 #define OrgW3cDomDOMException_VALIDATION_ERR 16
-#define OrgW3cDomDOMException_WRONG_DOCUMENT_ERR 4
+#define OrgW3cDomDOMException_TYPE_MISMATCH_ERR 17
 
 @interface OrgW3cDomDOMException : JavaLangRuntimeException {
  @public
   jshort code_;
 }
 
+#pragma mark Public
+
 - (instancetype)initWithShort:(jshort)code
                  withNSString:(NSString *)message;
 
-- (void)copyAllFieldsTo:(OrgW3cDomDOMException *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDOMException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDOMException)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomDOMException, INDEX_SIZE_ERR, jshort)
 
@@ -74,5 +74,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomDOMException, INVALID_ACCESS_ERR, jshort)
 J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomDOMException, VALIDATION_ERR, jshort)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomDOMException, TYPE_MISMATCH_ERR, jshort)
+
+FOUNDATION_EXPORT void OrgW3cDomDOMException_initWithShort_withNSString_(OrgW3cDomDOMException *self, jshort code, NSString *message);
+
+FOUNDATION_EXPORT OrgW3cDomDOMException *new_OrgW3cDomDOMException_initWithShort_withNSString_(jshort code, NSString *message) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDOMException)
 
 #endif // _OrgW3cDomDOMException_H_

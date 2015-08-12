@@ -6,19 +6,18 @@
 #ifndef _JavaSecurityInvalidAlgorithmParameterException_H_
 #define _JavaSecurityInvalidAlgorithmParameterException_H_
 
-@class JavaLangThrowable;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/GeneralSecurityException.h"
 
-#define JavaSecurityInvalidAlgorithmParameterException_serialVersionUID 2864672297499471472LL
+@class JavaLangThrowable;
 
-@interface JavaSecurityInvalidAlgorithmParameterException : JavaSecurityGeneralSecurityException {
-}
+@interface JavaSecurityInvalidAlgorithmParameterException : JavaSecurityGeneralSecurityException
 
-- (instancetype)initWithNSString:(NSString *)msg;
+#pragma mark Public
 
 - (instancetype)init;
+
+- (instancetype)initWithNSString:(NSString *)msg;
 
 - (instancetype)initWithNSString:(NSString *)message
            withJavaLangThrowable:(JavaLangThrowable *)cause;
@@ -27,8 +26,24 @@
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityInvalidAlgorithmParameterException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityInvalidAlgorithmParameterException)
 
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityInvalidAlgorithmParameterException, serialVersionUID, jlong)
+FOUNDATION_EXPORT void JavaSecurityInvalidAlgorithmParameterException_initWithNSString_(JavaSecurityInvalidAlgorithmParameterException *self, NSString *msg);
+
+FOUNDATION_EXPORT JavaSecurityInvalidAlgorithmParameterException *new_JavaSecurityInvalidAlgorithmParameterException_initWithNSString_(NSString *msg) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaSecurityInvalidAlgorithmParameterException_init(JavaSecurityInvalidAlgorithmParameterException *self);
+
+FOUNDATION_EXPORT JavaSecurityInvalidAlgorithmParameterException *new_JavaSecurityInvalidAlgorithmParameterException_init() NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaSecurityInvalidAlgorithmParameterException_initWithNSString_withJavaLangThrowable_(JavaSecurityInvalidAlgorithmParameterException *self, NSString *message, JavaLangThrowable *cause);
+
+FOUNDATION_EXPORT JavaSecurityInvalidAlgorithmParameterException *new_JavaSecurityInvalidAlgorithmParameterException_initWithNSString_withJavaLangThrowable_(NSString *message, JavaLangThrowable *cause) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaSecurityInvalidAlgorithmParameterException_initWithJavaLangThrowable_(JavaSecurityInvalidAlgorithmParameterException *self, JavaLangThrowable *cause);
+
+FOUNDATION_EXPORT JavaSecurityInvalidAlgorithmParameterException *new_JavaSecurityInvalidAlgorithmParameterException_initWithJavaLangThrowable_(JavaLangThrowable *cause) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityInvalidAlgorithmParameterException)
 
 #endif // _JavaSecurityInvalidAlgorithmParameterException_H_

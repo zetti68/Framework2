@@ -6,10 +6,11 @@
 #ifndef _OrgW3cDomText_H_
 #define _OrgW3cDomText_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/CharacterData.h"
 
 @protocol OrgW3cDomText < OrgW3cDomCharacterData, NSObject, JavaObject >
+
 - (id<OrgW3cDomText>)splitTextWithInt:(jint)offset;
 
 - (jboolean)isElementContentWhitespace;
@@ -20,6 +21,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomText_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomText)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomText)
 
 #endif // _OrgW3cDomText_H_

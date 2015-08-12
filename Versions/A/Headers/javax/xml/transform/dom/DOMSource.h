@@ -6,16 +6,14 @@
 #ifndef _JavaxXmlTransformDomDOMSource_H_
 #define _JavaxXmlTransformDomDOMSource_H_
 
-@protocol OrgW3cDomNode;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "javax/xml/transform/Source.h"
 
-@interface JavaxXmlTransformDomDOMSource : NSObject < JavaxXmlTransformSource > {
- @public
-  id<OrgW3cDomNode> node_;
-  NSString *systemID_;
-}
+@protocol OrgW3cDomNode;
+
+@interface JavaxXmlTransformDomDOMSource : NSObject < JavaxXmlTransformSource >
+
+#pragma mark Public
 
 - (instancetype)init;
 
@@ -24,24 +22,33 @@
 - (instancetype)initWithOrgW3cDomNode:(id<OrgW3cDomNode>)node
                          withNSString:(NSString *)systemID;
 
-- (void)setNodeWithOrgW3cDomNode:(id<OrgW3cDomNode>)node;
-
 - (id<OrgW3cDomNode>)getNode;
-
-- (void)setSystemIdWithNSString:(NSString *)systemID;
 
 - (NSString *)getSystemId;
 
-- (void)copyAllFieldsTo:(JavaxXmlTransformDomDOMSource *)other;
+- (void)setNodeWithOrgW3cDomNode:(id<OrgW3cDomNode>)node;
+
+- (void)setSystemIdWithNSString:(NSString *)systemID;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxXmlTransformDomDOMSource_init() {}
-
-J2OBJC_FIELD_SETTER(JavaxXmlTransformDomDOMSource, node_, id<OrgW3cDomNode>)
-J2OBJC_FIELD_SETTER(JavaxXmlTransformDomDOMSource, systemID_, NSString *)
+J2OBJC_EMPTY_STATIC_INIT(JavaxXmlTransformDomDOMSource)
 
 FOUNDATION_EXPORT NSString *JavaxXmlTransformDomDOMSource_FEATURE_;
 J2OBJC_STATIC_FIELD_GETTER(JavaxXmlTransformDomDOMSource, FEATURE_, NSString *)
+
+FOUNDATION_EXPORT void JavaxXmlTransformDomDOMSource_init(JavaxXmlTransformDomDOMSource *self);
+
+FOUNDATION_EXPORT JavaxXmlTransformDomDOMSource *new_JavaxXmlTransformDomDOMSource_init() NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxXmlTransformDomDOMSource_initWithOrgW3cDomNode_(JavaxXmlTransformDomDOMSource *self, id<OrgW3cDomNode> n);
+
+FOUNDATION_EXPORT JavaxXmlTransformDomDOMSource *new_JavaxXmlTransformDomDOMSource_initWithOrgW3cDomNode_(id<OrgW3cDomNode> n) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxXmlTransformDomDOMSource_initWithOrgW3cDomNode_withNSString_(JavaxXmlTransformDomDOMSource *self, id<OrgW3cDomNode> node, NSString *systemID);
+
+FOUNDATION_EXPORT JavaxXmlTransformDomDOMSource *new_JavaxXmlTransformDomDOMSource_initWithOrgW3cDomNode_withNSString_(id<OrgW3cDomNode> node, NSString *systemID) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxXmlTransformDomDOMSource)
 
 #endif // _JavaxXmlTransformDomDOMSource_H_

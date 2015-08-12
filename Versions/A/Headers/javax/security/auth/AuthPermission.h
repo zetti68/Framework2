@@ -6,13 +6,14 @@
 #ifndef _JavaxSecurityAuthAuthPermission_H_
 #define _JavaxSecurityAuthAuthPermission_H_
 
-@class JavaSecurityPermission;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/BasicPermission.h"
 
-@interface JavaxSecurityAuthAuthPermission : JavaSecurityBasicPermission {
-}
+@class JavaSecurityPermission;
+
+@interface JavaxSecurityAuthAuthPermission : JavaSecurityBasicPermission
+
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)name;
 
@@ -25,6 +26,16 @@
 
 @end
 
-__attribute__((always_inline)) inline void JavaxSecurityAuthAuthPermission_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxSecurityAuthAuthPermission)
+
+FOUNDATION_EXPORT void JavaxSecurityAuthAuthPermission_initWithNSString_(JavaxSecurityAuthAuthPermission *self, NSString *name);
+
+FOUNDATION_EXPORT JavaxSecurityAuthAuthPermission *new_JavaxSecurityAuthAuthPermission_initWithNSString_(NSString *name) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxSecurityAuthAuthPermission_initWithNSString_withNSString_(JavaxSecurityAuthAuthPermission *self, NSString *name, NSString *actions);
+
+FOUNDATION_EXPORT JavaxSecurityAuthAuthPermission *new_JavaxSecurityAuthAuthPermission_initWithNSString_withNSString_(NSString *name, NSString *actions) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxSecurityAuthAuthPermission)
 
 #endif // _JavaxSecurityAuthAuthPermission_H_

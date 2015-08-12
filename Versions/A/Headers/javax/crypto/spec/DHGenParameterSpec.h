@@ -6,26 +6,28 @@
 #ifndef _JavaxCryptoSpecDHGenParameterSpec_H_
 #define _JavaxCryptoSpecDHGenParameterSpec_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaxCryptoSpecDHGenParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec > {
- @public
-  jint primeSize_;
-  jint exponentSize_;
-}
+@interface JavaxCryptoSpecDHGenParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec >
+
+#pragma mark Public
 
 - (instancetype)initWithInt:(jint)primeSize
                     withInt:(jint)exponentSize;
 
-- (jint)getPrimeSize;
-
 - (jint)getExponentSize;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecDHGenParameterSpec *)other;
+- (jint)getPrimeSize;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecDHGenParameterSpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecDHGenParameterSpec)
+
+FOUNDATION_EXPORT void JavaxCryptoSpecDHGenParameterSpec_initWithInt_withInt_(JavaxCryptoSpecDHGenParameterSpec *self, jint primeSize, jint exponentSize);
+
+FOUNDATION_EXPORT JavaxCryptoSpecDHGenParameterSpec *new_JavaxCryptoSpecDHGenParameterSpec_initWithInt_withInt_(jint primeSize, jint exponentSize) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecDHGenParameterSpec)
 
 #endif // _JavaxCryptoSpecDHGenParameterSpec_H_

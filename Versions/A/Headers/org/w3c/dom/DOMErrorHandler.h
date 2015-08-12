@@ -6,9 +6,9 @@
 #ifndef _OrgW3cDomDOMErrorHandler_H_
 #define _OrgW3cDomDOMErrorHandler_H_
 
-@protocol OrgW3cDomDOMError;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol OrgW3cDomDOMError;
 
 @protocol OrgW3cDomDOMErrorHandler < NSObject, JavaObject >
 
@@ -16,6 +16,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDOMErrorHandler_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDOMErrorHandler)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDOMErrorHandler)
 
 #endif // _OrgW3cDomDOMErrorHandler_H_

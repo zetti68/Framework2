@@ -6,20 +6,15 @@
 #ifndef _JavaSecurityTimestamp_H_
 #define _JavaSecurityTimestamp_H_
 
+#include "J2ObjC_header.h"
+#include "java/io/Serializable.h"
+
 @class JavaSecurityCertCertPath;
 @class JavaUtilDate;
 
-#import "JreEmulation.h"
-#include "java/io/Serializable.h"
+@interface JavaSecurityTimestamp : NSObject < JavaIoSerializable >
 
-#define JavaSecurityTimestamp_serialVersionUID -5502683707821851294LL
-
-@interface JavaSecurityTimestamp : NSObject < JavaIoSerializable > {
- @public
-  JavaUtilDate *timestamp_;
-  JavaSecurityCertCertPath *signerCertPath_;
-  jint hash__;
-}
+#pragma mark Public
 
 - (instancetype)initWithJavaUtilDate:(JavaUtilDate *)timestamp
         withJavaSecurityCertCertPath:(JavaSecurityCertCertPath *)signerCertPath;
@@ -34,15 +29,14 @@
 
 - (NSString *)description;
 
-- (void)copyAllFieldsTo:(JavaSecurityTimestamp *)other;
-
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityTimestamp_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityTimestamp)
 
-J2OBJC_FIELD_SETTER(JavaSecurityTimestamp, timestamp_, JavaUtilDate *)
-J2OBJC_FIELD_SETTER(JavaSecurityTimestamp, signerCertPath_, JavaSecurityCertCertPath *)
+FOUNDATION_EXPORT void JavaSecurityTimestamp_initWithJavaUtilDate_withJavaSecurityCertCertPath_(JavaSecurityTimestamp *self, JavaUtilDate *timestamp, JavaSecurityCertCertPath *signerCertPath);
 
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityTimestamp, serialVersionUID, jlong)
+FOUNDATION_EXPORT JavaSecurityTimestamp *new_JavaSecurityTimestamp_initWithJavaUtilDate_withJavaSecurityCertCertPath_(JavaUtilDate *timestamp, JavaSecurityCertCertPath *signerCertPath) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityTimestamp)
 
 #endif // _JavaSecurityTimestamp_H_

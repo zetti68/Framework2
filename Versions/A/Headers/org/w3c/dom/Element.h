@@ -6,14 +6,15 @@
 #ifndef _OrgW3cDomElement_H_
 #define _OrgW3cDomElement_H_
 
+#include "J2ObjC_header.h"
+#include "org/w3c/dom/Node.h"
+
 @protocol OrgW3cDomAttr;
 @protocol OrgW3cDomNodeList;
 @protocol OrgW3cDomTypeInfo;
 
-#import "JreEmulation.h"
-#include "org/w3c/dom/Node.h"
-
 @protocol OrgW3cDomElement < OrgW3cDomNode, NSObject, JavaObject >
+
 - (NSString *)getTagName;
 
 - (NSString *)getAttributeWithNSString:(NSString *)name;
@@ -68,6 +69,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomElement_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomElement)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomElement)
 
 #endif // _OrgW3cDomElement_H_

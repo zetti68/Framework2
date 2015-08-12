@@ -6,10 +6,11 @@
 #ifndef _OrgW3cDomProcessingInstruction_H_
 #define _OrgW3cDomProcessingInstruction_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/Node.h"
 
 @protocol OrgW3cDomProcessingInstruction < OrgW3cDomNode, NSObject, JavaObject >
+
 - (NSString *)getTarget;
 
 - (NSString *)getData;
@@ -18,6 +19,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomProcessingInstruction_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomProcessingInstruction)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomProcessingInstruction)
 
 #endif // _OrgW3cDomProcessingInstruction_H_

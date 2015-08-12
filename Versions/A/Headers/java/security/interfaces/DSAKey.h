@@ -6,9 +6,9 @@
 #ifndef _JavaSecurityInterfacesDSAKey_H_
 #define _JavaSecurityInterfacesDSAKey_H_
 
-@protocol JavaSecurityInterfacesDSAParams;
+#include "J2ObjC_header.h"
 
-#import "JreEmulation.h"
+@protocol JavaSecurityInterfacesDSAParams;
 
 @protocol JavaSecurityInterfacesDSAKey < NSObject, JavaObject >
 
@@ -16,6 +16,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityInterfacesDSAKey_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityInterfacesDSAKey)
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityInterfacesDSAKey)
 
 #endif // _JavaSecurityInterfacesDSAKey_H_

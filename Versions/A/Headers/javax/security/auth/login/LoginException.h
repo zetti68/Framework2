@@ -6,13 +6,12 @@
 #ifndef _JavaxSecurityAuthLoginLoginException_H_
 #define _JavaxSecurityAuthLoginLoginException_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/GeneralSecurityException.h"
 
-#define JavaxSecurityAuthLoginLoginException_serialVersionUID -4679091624035232488LL
+@interface JavaxSecurityAuthLoginLoginException : JavaSecurityGeneralSecurityException
 
-@interface JavaxSecurityAuthLoginLoginException : JavaSecurityGeneralSecurityException {
-}
+#pragma mark Public
 
 - (instancetype)init;
 
@@ -20,8 +19,16 @@
 
 @end
 
-__attribute__((always_inline)) inline void JavaxSecurityAuthLoginLoginException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxSecurityAuthLoginLoginException)
 
-J2OBJC_STATIC_FIELD_GETTER(JavaxSecurityAuthLoginLoginException, serialVersionUID, jlong)
+FOUNDATION_EXPORT void JavaxSecurityAuthLoginLoginException_init(JavaxSecurityAuthLoginLoginException *self);
+
+FOUNDATION_EXPORT JavaxSecurityAuthLoginLoginException *new_JavaxSecurityAuthLoginLoginException_init() NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxSecurityAuthLoginLoginException_initWithNSString_(JavaxSecurityAuthLoginLoginException *self, NSString *message);
+
+FOUNDATION_EXPORT JavaxSecurityAuthLoginLoginException *new_JavaxSecurityAuthLoginLoginException_initWithNSString_(NSString *message) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxSecurityAuthLoginLoginException)
 
 #endif // _JavaxSecurityAuthLoginLoginException_H_

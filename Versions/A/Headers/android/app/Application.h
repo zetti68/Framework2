@@ -6,23 +6,28 @@
 #ifndef _AndroidAppApplication_H_
 #define _AndroidAppApplication_H_
 
+#include "J2ObjC_header.h"
+
 @protocol AndroidContentContext;
 
-#import "JreEmulation.h"
+@interface AndroidAppApplication : NSObject
 
-@interface AndroidAppApplication : NSObject {
-}
+#pragma mark Public
+
+- (instancetype)init;
+
+- (id<AndroidContentContext>)getApplicationContext;
 
 - (void)onCreate;
 
 - (void)onTerminate;
 
-- (id<AndroidContentContext>)getApplicationContext;
-
-- (instancetype)init;
-
 @end
 
-__attribute__((always_inline)) inline void AndroidAppApplication_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidAppApplication)
+
+FOUNDATION_EXPORT void AndroidAppApplication_init(AndroidAppApplication *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidAppApplication)
 
 #endif // _AndroidAppApplication_H_

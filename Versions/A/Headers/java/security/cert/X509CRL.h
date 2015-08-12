@@ -6,6 +6,10 @@
 #ifndef _JavaSecurityCertX509CRL_H_
 #define _JavaSecurityCertX509CRL_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/cert/CRL.h"
+#include "java/security/cert/X509Extension.h"
+
 @class IOSByteArray;
 @class JavaMathBigInteger;
 @class JavaSecurityCertX509CRLEntry;
@@ -16,33 +20,17 @@
 @protocol JavaSecurityPublicKey;
 @protocol JavaUtilSet;
 
-#import "JreEmulation.h"
-#include "java/security/cert/CRL.h"
-#include "java/security/cert/X509Extension.h"
+@interface JavaSecurityCertX509CRL : JavaSecurityCertCRL < JavaSecurityCertX509Extension >
 
-@interface JavaSecurityCertX509CRL : JavaSecurityCertCRL < JavaSecurityCertX509Extension > {
-}
-
-- (instancetype)init;
+#pragma mark Public
 
 - (jboolean)isEqual:(id)other;
 
-- (NSUInteger)hash;
-
 - (IOSByteArray *)getEncoded;
-
-- (void)verifyWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key;
-
-- (void)verifyWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key
-                           withNSString:(NSString *)sigProvider;
-
-- (jint)getVersion;
 
 - (id<JavaSecurityPrincipal>)getIssuerDN;
 
 - (JavaxSecurityAuthX500X500Principal *)getIssuerX500Principal;
-
-- (JavaUtilDate *)getThisUpdate;
 
 - (JavaUtilDate *)getNextUpdate;
 
@@ -52,18 +40,37 @@
 
 - (id<JavaUtilSet>)getRevokedCertificates;
 
-- (IOSByteArray *)getTBSCertList;
-
-- (IOSByteArray *)getSignature;
-
 - (NSString *)getSigAlgName;
 
 - (NSString *)getSigAlgOID;
 
 - (IOSByteArray *)getSigAlgParams;
 
+- (IOSByteArray *)getSignature;
+
+- (IOSByteArray *)getTBSCertList;
+
+- (JavaUtilDate *)getThisUpdate;
+
+- (jint)getVersion;
+
+- (NSUInteger)hash;
+
+- (void)verifyWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key;
+
+- (void)verifyWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key
+                           withNSString:(NSString *)sigProvider;
+
+#pragma mark Protected
+
+- (instancetype)init;
+
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityCertX509CRL_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityCertX509CRL)
+
+FOUNDATION_EXPORT void JavaSecurityCertX509CRL_init(JavaSecurityCertX509CRL *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityCertX509CRL)
 
 #endif // _JavaSecurityCertX509CRL_H_

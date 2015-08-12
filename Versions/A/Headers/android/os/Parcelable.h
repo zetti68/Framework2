@@ -6,10 +6,10 @@
 #ifndef _AndroidOsParcelable_H_
 #define _AndroidOsParcelable_H_
 
+#include "J2ObjC_header.h"
+
 @class IOSObjectArray;
 @protocol AndroidOsParcel;
-
-#import "JreEmulation.h"
 
 @protocol AndroidOsParcelable < NSObject, JavaObject >
 
@@ -20,7 +20,9 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidOsParcelable_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidOsParcelable)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidOsParcelable)
 
 @protocol AndroidOsParcelable_Creator < NSObject, JavaObject >
 
@@ -30,6 +32,8 @@ __attribute__((always_inline)) inline void AndroidOsParcelable_init() {}
 
 @end
 
-__attribute__((always_inline)) inline void AndroidOsParcelable_Creator_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidOsParcelable_Creator)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidOsParcelable_Creator)
 
 #endif // _AndroidOsParcelable_H_

@@ -6,79 +6,69 @@
 #ifndef _JavaSecurityKeyRep_H_
 #define _JavaSecurityKeyRep_H_
 
-@class IOSByteArray;
-@class JavaIoObjectInputStream;
-@class JavaSecurityKeyRep_TypeEnum;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 #include "java/lang/Enum.h"
 
-#define JavaSecurityKeyRep_serialVersionUID -4757683898830641853LL
+@class IOSByteArray;
+@class JavaSecurityKeyRep_TypeEnum;
 
-@interface JavaSecurityKeyRep : NSObject < JavaIoSerializable > {
- @public
-  JavaSecurityKeyRep_TypeEnum *type_;
-  NSString *algorithm_;
-  NSString *format_;
-  IOSByteArray *encoded_;
-}
+@interface JavaSecurityKeyRep : NSObject < JavaIoSerializable >
+
+#pragma mark Public
 
 - (instancetype)initWithJavaSecurityKeyRep_TypeEnum:(JavaSecurityKeyRep_TypeEnum *)type
                                        withNSString:(NSString *)algorithm
                                        withNSString:(NSString *)format
                                       withByteArray:(IOSByteArray *)encoded;
 
+#pragma mark Protected
+
 - (id)readResolve;
-
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)is;
-
-- (void)copyAllFieldsTo:(JavaSecurityKeyRep *)other;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityKeyRep_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityKeyRep)
 
-J2OBJC_FIELD_SETTER(JavaSecurityKeyRep, type_, JavaSecurityKeyRep_TypeEnum *)
-J2OBJC_FIELD_SETTER(JavaSecurityKeyRep, algorithm_, NSString *)
-J2OBJC_FIELD_SETTER(JavaSecurityKeyRep, format_, NSString *)
-J2OBJC_FIELD_SETTER(JavaSecurityKeyRep, encoded_, IOSByteArray *)
+FOUNDATION_EXPORT void JavaSecurityKeyRep_initWithJavaSecurityKeyRep_TypeEnum_withNSString_withNSString_withByteArray_(JavaSecurityKeyRep *self, JavaSecurityKeyRep_TypeEnum *type, NSString *algorithm, NSString *format, IOSByteArray *encoded);
 
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityKeyRep, serialVersionUID, jlong)
+FOUNDATION_EXPORT JavaSecurityKeyRep *new_JavaSecurityKeyRep_initWithJavaSecurityKeyRep_TypeEnum_withNSString_withNSString_withByteArray_(JavaSecurityKeyRep_TypeEnum *type, NSString *algorithm, NSString *format, IOSByteArray *encoded) NS_RETURNS_RETAINED;
 
-typedef enum {
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityKeyRep)
+
+typedef NS_ENUM(NSUInteger, JavaSecurityKeyRep_Type) {
   JavaSecurityKeyRep_Type_SECRET = 0,
   JavaSecurityKeyRep_Type_PUBLIC = 1,
   JavaSecurityKeyRep_Type_PRIVATE = 2,
-} JavaSecurityKeyRep_Type;
+};
 
-@interface JavaSecurityKeyRep_TypeEnum : JavaLangEnum < NSCopying > {
-}
+@interface JavaSecurityKeyRep_TypeEnum : JavaLangEnum < NSCopying >
 
-- (instancetype)initWithNSString:(NSString *)__name
-                         withInt:(jint)__ordinal;
+#pragma mark Package-Private
 
 + (IOSObjectArray *)values;
 FOUNDATION_EXPORT IOSObjectArray *JavaSecurityKeyRep_TypeEnum_values();
 
 + (JavaSecurityKeyRep_TypeEnum *)valueOfWithNSString:(NSString *)name;
+FOUNDATION_EXPORT JavaSecurityKeyRep_TypeEnum *JavaSecurityKeyRep_TypeEnum_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT JavaSecurityKeyRep_TypeEnum *JavaSecurityKeyRep_TypeEnum_valueOfWithNSString_(NSString *name);- (id)copyWithZone:(NSZone *)zone;
+- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
-FOUNDATION_EXPORT BOOL JavaSecurityKeyRep_TypeEnum_initialized;
 J2OBJC_STATIC_INIT(JavaSecurityKeyRep_TypeEnum)
 
 FOUNDATION_EXPORT JavaSecurityKeyRep_TypeEnum *JavaSecurityKeyRep_TypeEnum_values_[];
 
 #define JavaSecurityKeyRep_TypeEnum_SECRET JavaSecurityKeyRep_TypeEnum_values_[JavaSecurityKeyRep_Type_SECRET]
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityKeyRep_TypeEnum, SECRET, JavaSecurityKeyRep_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(JavaSecurityKeyRep_TypeEnum, SECRET)
 
 #define JavaSecurityKeyRep_TypeEnum_PUBLIC JavaSecurityKeyRep_TypeEnum_values_[JavaSecurityKeyRep_Type_PUBLIC]
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityKeyRep_TypeEnum, PUBLIC, JavaSecurityKeyRep_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(JavaSecurityKeyRep_TypeEnum, PUBLIC)
 
 #define JavaSecurityKeyRep_TypeEnum_PRIVATE JavaSecurityKeyRep_TypeEnum_values_[JavaSecurityKeyRep_Type_PRIVATE]
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityKeyRep_TypeEnum, PRIVATE, JavaSecurityKeyRep_TypeEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(JavaSecurityKeyRep_TypeEnum, PRIVATE)
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityKeyRep_TypeEnum)
 
 #endif // _JavaSecurityKeyRep_H_

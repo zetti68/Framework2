@@ -6,13 +6,14 @@
 #ifndef _AndroidDatabaseSqliteSQLiteOpenHelper_H_
 #define _AndroidDatabaseSqliteSQLiteOpenHelper_H_
 
+#include "J2ObjC_header.h"
+
 @class AndroidDatabaseSqliteSQLiteDatabase;
 @protocol AndroidContentContext;
 
-#import "JreEmulation.h"
+@interface AndroidDatabaseSqliteSQLiteOpenHelper : NSObject
 
-@interface AndroidDatabaseSqliteSQLiteOpenHelper : NSObject {
-}
+#pragma mark Public
 
 - (instancetype)initWithAndroidContentContext:(id<AndroidContentContext>)pContext
                                  withNSString:(NSString *)pDbName
@@ -29,6 +30,12 @@
 
 @end
 
-__attribute__((always_inline)) inline void AndroidDatabaseSqliteSQLiteOpenHelper_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidDatabaseSqliteSQLiteOpenHelper)
+
+FOUNDATION_EXPORT void AndroidDatabaseSqliteSQLiteOpenHelper_initWithAndroidContentContext_withNSString_withId_withInt_(AndroidDatabaseSqliteSQLiteOpenHelper *self, id<AndroidContentContext> pContext, NSString *pDbName, id pObject, jint pI);
+
+FOUNDATION_EXPORT AndroidDatabaseSqliteSQLiteOpenHelper *new_AndroidDatabaseSqliteSQLiteOpenHelper_initWithAndroidContentContext_withNSString_withId_withInt_(id<AndroidContentContext> pContext, NSString *pDbName, id pObject, jint pI) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidDatabaseSqliteSQLiteOpenHelper)
 
 #endif // _AndroidDatabaseSqliteSQLiteOpenHelper_H_

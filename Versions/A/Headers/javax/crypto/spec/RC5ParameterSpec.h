@@ -6,18 +6,14 @@
 #ifndef _JavaxCryptoSpecRC5ParameterSpec_H_
 #define _JavaxCryptoSpecRC5ParameterSpec_H_
 
-@class IOSByteArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaxCryptoSpecRC5ParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec > {
- @public
-  jint version__;
-  jint rounds_;
-  jint wordSize_;
-  IOSByteArray *iv_;
-}
+@class IOSByteArray;
+
+@interface JavaxCryptoSpecRC5ParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec >
+
+#pragma mark Public
 
 - (instancetype)initWithInt:(jint)version_
                     withInt:(jint)rounds
@@ -34,24 +30,34 @@
               withByteArray:(IOSByteArray *)iv
                     withInt:(jint)offset;
 
-- (jint)getVersion;
-
-- (jint)getRounds;
-
-- (jint)getWordSize;
+- (jboolean)isEqual:(id)obj;
 
 - (IOSByteArray *)getIV;
 
-- (jboolean)isEqual:(id)obj;
+- (jint)getRounds;
+
+- (jint)getVersion;
+
+- (jint)getWordSize;
 
 - (NSUInteger)hash;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecRC5ParameterSpec *)other;
-
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecRC5ParameterSpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecRC5ParameterSpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecRC5ParameterSpec, iv_, IOSByteArray *)
+FOUNDATION_EXPORT void JavaxCryptoSpecRC5ParameterSpec_initWithInt_withInt_withInt_(JavaxCryptoSpecRC5ParameterSpec *self, jint version_, jint rounds, jint wordSize);
+
+FOUNDATION_EXPORT JavaxCryptoSpecRC5ParameterSpec *new_JavaxCryptoSpecRC5ParameterSpec_initWithInt_withInt_withInt_(jint version_, jint rounds, jint wordSize) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecRC5ParameterSpec_initWithInt_withInt_withInt_withByteArray_(JavaxCryptoSpecRC5ParameterSpec *self, jint version_, jint rounds, jint wordSize, IOSByteArray *iv);
+
+FOUNDATION_EXPORT JavaxCryptoSpecRC5ParameterSpec *new_JavaxCryptoSpecRC5ParameterSpec_initWithInt_withInt_withInt_withByteArray_(jint version_, jint rounds, jint wordSize, IOSByteArray *iv) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecRC5ParameterSpec_initWithInt_withInt_withInt_withByteArray_withInt_(JavaxCryptoSpecRC5ParameterSpec *self, jint version_, jint rounds, jint wordSize, IOSByteArray *iv, jint offset);
+
+FOUNDATION_EXPORT JavaxCryptoSpecRC5ParameterSpec *new_JavaxCryptoSpecRC5ParameterSpec_initWithInt_withInt_withInt_withByteArray_withInt_(jint version_, jint rounds, jint wordSize, IOSByteArray *iv, jint offset) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecRC5ParameterSpec)
 
 #endif // _JavaxCryptoSpecRC5ParameterSpec_H_

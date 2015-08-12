@@ -6,7 +6,7 @@
 #ifndef _OrgW3cDomNameList_H_
 #define _OrgW3cDomNameList_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 @protocol OrgW3cDomNameList < NSObject, JavaObject >
 
@@ -23,6 +23,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomNameList_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomNameList)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomNameList)
 
 #endif // _OrgW3cDomNameList_H_

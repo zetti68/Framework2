@@ -6,16 +6,19 @@
 #ifndef _JavaxXmlTransformDomDOMLocator_H_
 #define _JavaxXmlTransformDomDOMLocator_H_
 
-@protocol OrgW3cDomNode;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "javax/xml/transform/SourceLocator.h"
 
+@protocol OrgW3cDomNode;
+
 @protocol JavaxXmlTransformDomDOMLocator < JavaxXmlTransformSourceLocator, NSObject, JavaObject >
+
 - (id<OrgW3cDomNode>)getOriginatingNode;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxXmlTransformDomDOMLocator_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxXmlTransformDomDOMLocator)
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxXmlTransformDomDOMLocator)
 
 #endif // _JavaxXmlTransformDomDOMLocator_H_

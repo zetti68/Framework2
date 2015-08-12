@@ -6,24 +6,31 @@
 #ifndef _JavaxSecurityAuthSubjectDomainCombiner_H_
 #define _JavaxSecurityAuthSubjectDomainCombiner_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/DomainCombiner.h"
+
 @class IOSObjectArray;
 @class JavaxSecurityAuthSubject;
 
-#import "JreEmulation.h"
-#include "java/security/DomainCombiner.h"
+@interface JavaxSecurityAuthSubjectDomainCombiner : NSObject < JavaSecurityDomainCombiner >
 
-@interface JavaxSecurityAuthSubjectDomainCombiner : NSObject < JavaSecurityDomainCombiner > {
-}
+#pragma mark Public
 
 - (instancetype)initWithJavaxSecurityAuthSubject:(JavaxSecurityAuthSubject *)subject;
-
-- (JavaxSecurityAuthSubject *)getSubject;
 
 - (IOSObjectArray *)combineWithJavaSecurityProtectionDomainArray:(IOSObjectArray *)currentDomains
                            withJavaSecurityProtectionDomainArray:(IOSObjectArray *)assignedDomains;
 
+- (JavaxSecurityAuthSubject *)getSubject;
+
 @end
 
-__attribute__((always_inline)) inline void JavaxSecurityAuthSubjectDomainCombiner_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxSecurityAuthSubjectDomainCombiner)
+
+FOUNDATION_EXPORT void JavaxSecurityAuthSubjectDomainCombiner_initWithJavaxSecurityAuthSubject_(JavaxSecurityAuthSubjectDomainCombiner *self, JavaxSecurityAuthSubject *subject);
+
+FOUNDATION_EXPORT JavaxSecurityAuthSubjectDomainCombiner *new_JavaxSecurityAuthSubjectDomainCombiner_initWithJavaxSecurityAuthSubject_(JavaxSecurityAuthSubject *subject) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxSecurityAuthSubjectDomainCombiner)
 
 #endif // _JavaxSecurityAuthSubjectDomainCombiner_H_

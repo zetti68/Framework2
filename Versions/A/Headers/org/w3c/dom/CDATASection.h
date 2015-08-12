@@ -6,12 +6,15 @@
 #ifndef _OrgW3cDomCDATASection_H_
 #define _OrgW3cDomCDATASection_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/Text.h"
 
 @protocol OrgW3cDomCDATASection < OrgW3cDomText, NSObject, JavaObject >
+
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomCDATASection_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomCDATASection)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomCDATASection)
 
 #endif // _OrgW3cDomCDATASection_H_

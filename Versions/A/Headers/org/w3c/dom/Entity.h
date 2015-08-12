@@ -6,10 +6,11 @@
 #ifndef _OrgW3cDomEntity_H_
 #define _OrgW3cDomEntity_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/Node.h"
 
 @protocol OrgW3cDomEntity < OrgW3cDomNode, NSObject, JavaObject >
+
 - (NSString *)getPublicId;
 
 - (NSString *)getSystemId;
@@ -24,6 +25,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomEntity_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomEntity)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomEntity)
 
 #endif // _OrgW3cDomEntity_H_

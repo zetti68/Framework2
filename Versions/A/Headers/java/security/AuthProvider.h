@@ -6,18 +6,15 @@
 #ifndef _JavaSecurityAuthProvider_H_
 #define _JavaSecurityAuthProvider_H_
 
+#include "J2ObjC_header.h"
+#include "java/security/Provider.h"
+
 @class JavaxSecurityAuthSubject;
 @protocol JavaxSecurityAuthCallbackCallbackHandler;
 
-#import "JreEmulation.h"
-#include "java/security/Provider.h"
+@interface JavaSecurityAuthProvider : JavaSecurityProvider
 
-@interface JavaSecurityAuthProvider : JavaSecurityProvider {
-}
-
-- (instancetype)initWithNSString:(NSString *)name
-                      withDouble:(jdouble)version_
-                    withNSString:(NSString *)info;
+#pragma mark Public
 
 - (void)loginWithJavaxSecurityAuthSubject:(JavaxSecurityAuthSubject *)subject
 withJavaxSecurityAuthCallbackCallbackHandler:(id<JavaxSecurityAuthCallbackCallbackHandler>)handler;
@@ -26,8 +23,18 @@ withJavaxSecurityAuthCallbackCallbackHandler:(id<JavaxSecurityAuthCallbackCallba
 
 - (void)setCallbackHandlerWithJavaxSecurityAuthCallbackCallbackHandler:(id<JavaxSecurityAuthCallbackCallbackHandler>)handler;
 
+#pragma mark Protected
+
+- (instancetype)initWithNSString:(NSString *)name
+                      withDouble:(jdouble)version_
+                    withNSString:(NSString *)info;
+
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityAuthProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityAuthProvider)
+
+FOUNDATION_EXPORT void JavaSecurityAuthProvider_initWithNSString_withDouble_withNSString_(JavaSecurityAuthProvider *self, NSString *name, jdouble version_, NSString *info);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityAuthProvider)
 
 #endif // _JavaSecurityAuthProvider_H_

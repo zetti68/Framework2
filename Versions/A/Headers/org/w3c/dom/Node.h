@@ -6,31 +6,31 @@
 #ifndef _OrgW3cDomNode_H_
 #define _OrgW3cDomNode_H_
 
+#include "J2ObjC_header.h"
+
 @protocol OrgW3cDomDocument;
 @protocol OrgW3cDomNamedNodeMap;
 @protocol OrgW3cDomNodeList;
 @protocol OrgW3cDomUserDataHandler;
 
-#import "JreEmulation.h"
-
-#define OrgW3cDomNode_ATTRIBUTE_NODE 2
-#define OrgW3cDomNode_CDATA_SECTION_NODE 4
-#define OrgW3cDomNode_COMMENT_NODE 8
-#define OrgW3cDomNode_DOCUMENT_FRAGMENT_NODE 11
-#define OrgW3cDomNode_DOCUMENT_NODE 9
-#define OrgW3cDomNode_DOCUMENT_POSITION_CONTAINED_BY 16
-#define OrgW3cDomNode_DOCUMENT_POSITION_CONTAINS 8
-#define OrgW3cDomNode_DOCUMENT_POSITION_DISCONNECTED 1
-#define OrgW3cDomNode_DOCUMENT_POSITION_FOLLOWING 4
-#define OrgW3cDomNode_DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC 32
-#define OrgW3cDomNode_DOCUMENT_POSITION_PRECEDING 2
-#define OrgW3cDomNode_DOCUMENT_TYPE_NODE 10
 #define OrgW3cDomNode_ELEMENT_NODE 1
-#define OrgW3cDomNode_ENTITY_NODE 6
-#define OrgW3cDomNode_ENTITY_REFERENCE_NODE 5
-#define OrgW3cDomNode_NOTATION_NODE 12
-#define OrgW3cDomNode_PROCESSING_INSTRUCTION_NODE 7
+#define OrgW3cDomNode_ATTRIBUTE_NODE 2
 #define OrgW3cDomNode_TEXT_NODE 3
+#define OrgW3cDomNode_CDATA_SECTION_NODE 4
+#define OrgW3cDomNode_ENTITY_REFERENCE_NODE 5
+#define OrgW3cDomNode_ENTITY_NODE 6
+#define OrgW3cDomNode_PROCESSING_INSTRUCTION_NODE 7
+#define OrgW3cDomNode_COMMENT_NODE 8
+#define OrgW3cDomNode_DOCUMENT_NODE 9
+#define OrgW3cDomNode_DOCUMENT_TYPE_NODE 10
+#define OrgW3cDomNode_DOCUMENT_FRAGMENT_NODE 11
+#define OrgW3cDomNode_NOTATION_NODE 12
+#define OrgW3cDomNode_DOCUMENT_POSITION_DISCONNECTED 1
+#define OrgW3cDomNode_DOCUMENT_POSITION_PRECEDING 2
+#define OrgW3cDomNode_DOCUMENT_POSITION_FOLLOWING 4
+#define OrgW3cDomNode_DOCUMENT_POSITION_CONTAINS 8
+#define OrgW3cDomNode_DOCUMENT_POSITION_CONTAINED_BY 16
+#define OrgW3cDomNode_DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC 32
 
 @protocol OrgW3cDomNode < NSObject, JavaObject >
 
@@ -116,7 +116,7 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomNode_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomNode)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomNode, ELEMENT_NODE, jshort)
 
@@ -153,5 +153,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomNode, DOCUMENT_POSITION_CONTAINS, jshort)
 J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomNode, DOCUMENT_POSITION_CONTAINED_BY, jshort)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgW3cDomNode, DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC, jshort)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomNode)
 
 #endif // _OrgW3cDomNode_H_

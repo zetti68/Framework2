@@ -6,50 +6,49 @@
 #ifndef _JavaxCryptoSpecPSource_H_
 #define _JavaxCryptoSpecPSource_H_
 
+#include "J2ObjC_header.h"
+
 @class IOSByteArray;
 
-#import "JreEmulation.h"
+@interface JavaxCryptoSpecPSource : NSObject
 
-@interface JavaxCryptoSpecPSource : NSObject {
- @public
-  NSString *pSrcName_;
-}
-
-- (instancetype)init;
-
-- (instancetype)initWithNSString:(NSString *)pSrcName;
+#pragma mark Public
 
 - (NSString *)getAlgorithm;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecPSource *)other;
+#pragma mark Protected
+
+- (instancetype)initWithNSString:(NSString *)pSrcName;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecPSource_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecPSource)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecPSource, pSrcName_, NSString *)
+FOUNDATION_EXPORT void JavaxCryptoSpecPSource_initWithNSString_(JavaxCryptoSpecPSource *self, NSString *pSrcName);
 
-@interface JavaxCryptoSpecPSource_PSpecified : JavaxCryptoSpecPSource {
- @public
-  IOSByteArray *p_;
-}
+FOUNDATION_EXPORT JavaxCryptoSpecPSource *new_JavaxCryptoSpecPSource_initWithNSString_(NSString *pSrcName) NS_RETURNS_RETAINED;
 
-- (instancetype)init;
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecPSource)
+
+@interface JavaxCryptoSpecPSource_PSpecified : JavaxCryptoSpecPSource
+
+#pragma mark Public
 
 - (instancetype)initWithByteArray:(IOSByteArray *)p;
 
 - (IOSByteArray *)getValue;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecPSource_PSpecified *)other;
-
 @end
 
-FOUNDATION_EXPORT BOOL JavaxCryptoSpecPSource_PSpecified_initialized;
 J2OBJC_STATIC_INIT(JavaxCryptoSpecPSource_PSpecified)
-
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecPSource_PSpecified, p_, IOSByteArray *)
 
 FOUNDATION_EXPORT JavaxCryptoSpecPSource_PSpecified *JavaxCryptoSpecPSource_PSpecified_DEFAULT_;
 J2OBJC_STATIC_FIELD_GETTER(JavaxCryptoSpecPSource_PSpecified, DEFAULT_, JavaxCryptoSpecPSource_PSpecified *)
+
+FOUNDATION_EXPORT void JavaxCryptoSpecPSource_PSpecified_initWithByteArray_(JavaxCryptoSpecPSource_PSpecified *self, IOSByteArray *p);
+
+FOUNDATION_EXPORT JavaxCryptoSpecPSource_PSpecified *new_JavaxCryptoSpecPSource_PSpecified_initWithByteArray_(IOSByteArray *p) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecPSource_PSpecified)
 
 #endif // _JavaxCryptoSpecPSource_H_

@@ -6,30 +6,30 @@
 #ifndef _JavaxCryptoSpecPBEParameterSpec_H_
 #define _JavaxCryptoSpecPBEParameterSpec_H_
 
-@class IOSByteArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/AlgorithmParameterSpec.h"
 
-@interface JavaxCryptoSpecPBEParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec > {
- @public
-  IOSByteArray *salt_;
-  jint iterationCount_;
-}
+@class IOSByteArray;
+
+@interface JavaxCryptoSpecPBEParameterSpec : NSObject < JavaSecuritySpecAlgorithmParameterSpec >
+
+#pragma mark Public
 
 - (instancetype)initWithByteArray:(IOSByteArray *)salt
                           withInt:(jint)iterationCount;
 
-- (IOSByteArray *)getSalt;
-
 - (jint)getIterationCount;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecPBEParameterSpec *)other;
+- (IOSByteArray *)getSalt;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecPBEParameterSpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecPBEParameterSpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecPBEParameterSpec, salt_, IOSByteArray *)
+FOUNDATION_EXPORT void JavaxCryptoSpecPBEParameterSpec_initWithByteArray_withInt_(JavaxCryptoSpecPBEParameterSpec *self, IOSByteArray *salt, jint iterationCount);
+
+FOUNDATION_EXPORT JavaxCryptoSpecPBEParameterSpec *new_JavaxCryptoSpecPBEParameterSpec_initWithByteArray_withInt_(IOSByteArray *salt, jint iterationCount) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecPBEParameterSpec)
 
 #endif // _JavaxCryptoSpecPBEParameterSpec_H_

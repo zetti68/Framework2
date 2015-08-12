@@ -6,28 +6,18 @@
 #ifndef _JavaSecurityIdentity_H_
 #define _JavaSecurityIdentity_H_
 
-@class IOSObjectArray;
-@class JavaSecurityIdentityScope;
-@class JavaUtilVector;
-@protocol JavaSecurityCertificate;
-@protocol JavaSecurityPublicKey;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 #include "java/security/Principal.h"
 
-#define JavaSecurityIdentity_serialVersionUID 3609922007826600659LL
+@class IOSObjectArray;
+@class JavaSecurityIdentityScope;
+@protocol JavaSecurityCertificate;
+@protocol JavaSecurityPublicKey;
 
-@interface JavaSecurityIdentity : NSObject < JavaSecurityPrincipal, JavaIoSerializable > {
- @public
-  NSString *name_;
-  id<JavaSecurityPublicKey> publicKey_;
-  NSString *info_;
-  JavaSecurityIdentityScope *scope_;
-  JavaUtilVector *certificates__;
-}
+@interface JavaSecurityIdentity : NSObject < JavaSecurityPrincipal, JavaIoSerializable >
 
-- (instancetype)init;
+#pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)name;
 
@@ -36,47 +26,46 @@
 
 - (void)addCertificateWithJavaSecurityCertificate:(id<JavaSecurityCertificate>)certificate;
 
-+ (jboolean)checkKeysEqualWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)pk1
-                          withJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)pk2;
-
-- (void)removeCertificateWithJavaSecurityCertificate:(id<JavaSecurityCertificate>)certificate;
-
 - (IOSObjectArray *)certificates;
-
-- (jboolean)identityEqualsWithJavaSecurityIdentity:(JavaSecurityIdentity *)identity;
-
-- (NSString *)toStringWithBoolean:(jboolean)detailed;
-
-- (JavaSecurityIdentityScope *)getScope;
-
-- (void)setPublicKeyWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key;
-
-- (id<JavaSecurityPublicKey>)getPublicKey;
-
-- (void)setInfoWithNSString:(NSString *)info;
-
-- (NSString *)getInfo;
 
 - (jboolean)isEqual:(id)obj;
 
+- (NSString *)getInfo;
+
 - (NSString *)getName;
+
+- (id<JavaSecurityPublicKey>)getPublicKey;
+
+- (JavaSecurityIdentityScope *)getScope;
 
 - (NSUInteger)hash;
 
+- (void)removeCertificateWithJavaSecurityCertificate:(id<JavaSecurityCertificate>)certificate;
+
+- (void)setInfoWithNSString:(NSString *)info;
+
+- (void)setPublicKeyWithJavaSecurityPublicKey:(id<JavaSecurityPublicKey>)key;
+
 - (NSString *)description;
 
-- (void)copyAllFieldsTo:(JavaSecurityIdentity *)other;
+- (NSString *)toStringWithBoolean:(jboolean)detailed;
+
+#pragma mark Protected
+
+- (instancetype)init;
+
+- (jboolean)identityEqualsWithJavaSecurityIdentity:(JavaSecurityIdentity *)identity;
 
 @end
 
-__attribute__((always_inline)) inline void JavaSecurityIdentity_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecurityIdentity)
 
-J2OBJC_FIELD_SETTER(JavaSecurityIdentity, name_, NSString *)
-J2OBJC_FIELD_SETTER(JavaSecurityIdentity, publicKey_, id<JavaSecurityPublicKey>)
-J2OBJC_FIELD_SETTER(JavaSecurityIdentity, info_, NSString *)
-J2OBJC_FIELD_SETTER(JavaSecurityIdentity, scope_, JavaSecurityIdentityScope *)
-J2OBJC_FIELD_SETTER(JavaSecurityIdentity, certificates__, JavaUtilVector *)
+FOUNDATION_EXPORT void JavaSecurityIdentity_init(JavaSecurityIdentity *self);
 
-J2OBJC_STATIC_FIELD_GETTER(JavaSecurityIdentity, serialVersionUID, jlong)
+FOUNDATION_EXPORT void JavaSecurityIdentity_initWithNSString_(JavaSecurityIdentity *self, NSString *name);
+
+FOUNDATION_EXPORT void JavaSecurityIdentity_initWithNSString_withJavaSecurityIdentityScope_(JavaSecurityIdentity *self, NSString *name, JavaSecurityIdentityScope *scope);
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecurityIdentity)
 
 #endif // _JavaSecurityIdentity_H_

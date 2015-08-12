@@ -6,18 +6,14 @@
 #ifndef _JavaSecuritySpecDSAPublicKeySpec_H_
 #define _JavaSecuritySpecDSAPublicKeySpec_H_
 
-@class JavaMathBigInteger;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/spec/KeySpec.h"
 
-@interface JavaSecuritySpecDSAPublicKeySpec : NSObject < JavaSecuritySpecKeySpec > {
- @public
-  JavaMathBigInteger *y_;
-  JavaMathBigInteger *p_;
-  JavaMathBigInteger *q_;
-  JavaMathBigInteger *g_;
-}
+@class JavaMathBigInteger;
+
+@interface JavaSecuritySpecDSAPublicKeySpec : NSObject < JavaSecuritySpecKeySpec >
+
+#pragma mark Public
 
 - (instancetype)initWithJavaMathBigInteger:(JavaMathBigInteger *)y
                     withJavaMathBigInteger:(JavaMathBigInteger *)p
@@ -32,15 +28,14 @@
 
 - (JavaMathBigInteger *)getY;
 
-- (void)copyAllFieldsTo:(JavaSecuritySpecDSAPublicKeySpec *)other;
-
 @end
 
-__attribute__((always_inline)) inline void JavaSecuritySpecDSAPublicKeySpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaSecuritySpecDSAPublicKeySpec)
 
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAPublicKeySpec, y_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAPublicKeySpec, p_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAPublicKeySpec, q_, JavaMathBigInteger *)
-J2OBJC_FIELD_SETTER(JavaSecuritySpecDSAPublicKeySpec, g_, JavaMathBigInteger *)
+FOUNDATION_EXPORT void JavaSecuritySpecDSAPublicKeySpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_(JavaSecuritySpecDSAPublicKeySpec *self, JavaMathBigInteger *y, JavaMathBigInteger *p, JavaMathBigInteger *q, JavaMathBigInteger *g);
+
+FOUNDATION_EXPORT JavaSecuritySpecDSAPublicKeySpec *new_JavaSecuritySpecDSAPublicKeySpec_initWithJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_withJavaMathBigInteger_(JavaMathBigInteger *y, JavaMathBigInteger *p, JavaMathBigInteger *q, JavaMathBigInteger *g) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaSecuritySpecDSAPublicKeySpec)
 
 #endif // _JavaSecuritySpecDSAPublicKeySpec_H_

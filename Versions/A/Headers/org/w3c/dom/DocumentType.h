@@ -6,12 +6,13 @@
 #ifndef _OrgW3cDomDocumentType_H_
 #define _OrgW3cDomDocumentType_H_
 
-@protocol OrgW3cDomNamedNodeMap;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "org/w3c/dom/Node.h"
 
+@protocol OrgW3cDomNamedNodeMap;
+
 @protocol OrgW3cDomDocumentType < OrgW3cDomNode, NSObject, JavaObject >
+
 - (NSString *)getName;
 
 - (id<OrgW3cDomNamedNodeMap>)getEntities;
@@ -26,6 +27,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgW3cDomDocumentType_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgW3cDomDocumentType)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgW3cDomDocumentType)
 
 #endif // _OrgW3cDomDocumentType_H_

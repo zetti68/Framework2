@@ -6,12 +6,14 @@
 #ifndef _AndroidUtilAttributeSet_H_
 #define _AndroidUtilAttributeSet_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 @protocol AndroidUtilAttributeSet < NSObject, JavaObject >
 
 @end
 
-__attribute__((always_inline)) inline void AndroidUtilAttributeSet_init() {}
+J2OBJC_EMPTY_STATIC_INIT(AndroidUtilAttributeSet)
+
+J2OBJC_TYPE_LITERAL_HEADER(AndroidUtilAttributeSet)
 
 #endif // _AndroidUtilAttributeSet_H_

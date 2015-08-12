@@ -6,48 +6,47 @@
 #ifndef _JavaxCryptoSpecSecretKeySpec_H_
 #define _JavaxCryptoSpecSecretKeySpec_H_
 
-@class IOSByteArray;
-
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 #include "java/security/spec/KeySpec.h"
 #include "javax/crypto/SecretKey.h"
 
-#define JavaxCryptoSpecSecretKeySpec_serialVersionUID 6577238317307289933LL
+@class IOSByteArray;
 
-@interface JavaxCryptoSpecSecretKeySpec : NSObject < JavaxCryptoSecretKey, JavaSecuritySpecKeySpec, JavaIoSerializable > {
- @public
-  IOSByteArray *key_;
-  NSString *algorithm_;
-}
+@interface JavaxCryptoSpecSecretKeySpec : NSObject < JavaxCryptoSecretKey, JavaSecuritySpecKeySpec, JavaIoSerializable >
 
-- (instancetype)initWithByteArray:(IOSByteArray *)key
-                     withNSString:(NSString *)algorithm;
+#pragma mark Public
 
 - (instancetype)initWithByteArray:(IOSByteArray *)key
                           withInt:(jint)offset
                           withInt:(jint)len
                      withNSString:(NSString *)algorithm;
 
-- (NSString *)getAlgorithm;
-
-- (NSString *)getFormat;
-
-- (IOSByteArray *)getEncoded;
-
-- (NSUInteger)hash;
+- (instancetype)initWithByteArray:(IOSByteArray *)key
+                     withNSString:(NSString *)algorithm;
 
 - (jboolean)isEqual:(id)obj;
 
-- (void)copyAllFieldsTo:(JavaxCryptoSpecSecretKeySpec *)other;
+- (NSString *)getAlgorithm;
+
+- (IOSByteArray *)getEncoded;
+
+- (NSString *)getFormat;
+
+- (NSUInteger)hash;
 
 @end
 
-__attribute__((always_inline)) inline void JavaxCryptoSpecSecretKeySpec_init() {}
+J2OBJC_EMPTY_STATIC_INIT(JavaxCryptoSpecSecretKeySpec)
 
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecSecretKeySpec, key_, IOSByteArray *)
-J2OBJC_FIELD_SETTER(JavaxCryptoSpecSecretKeySpec, algorithm_, NSString *)
+FOUNDATION_EXPORT void JavaxCryptoSpecSecretKeySpec_initWithByteArray_withNSString_(JavaxCryptoSpecSecretKeySpec *self, IOSByteArray *key, NSString *algorithm);
 
-J2OBJC_STATIC_FIELD_GETTER(JavaxCryptoSpecSecretKeySpec, serialVersionUID, jlong)
+FOUNDATION_EXPORT JavaxCryptoSpecSecretKeySpec *new_JavaxCryptoSpecSecretKeySpec_initWithByteArray_withNSString_(IOSByteArray *key, NSString *algorithm) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT void JavaxCryptoSpecSecretKeySpec_initWithByteArray_withInt_withInt_withNSString_(JavaxCryptoSpecSecretKeySpec *self, IOSByteArray *key, jint offset, jint len, NSString *algorithm);
+
+FOUNDATION_EXPORT JavaxCryptoSpecSecretKeySpec *new_JavaxCryptoSpecSecretKeySpec_initWithByteArray_withInt_withInt_withNSString_(IOSByteArray *key, jint offset, jint len, NSString *algorithm) NS_RETURNS_RETAINED;
+
+J2OBJC_TYPE_LITERAL_HEADER(JavaxCryptoSpecSecretKeySpec)
 
 #endif // _JavaxCryptoSpecSecretKeySpec_H_
